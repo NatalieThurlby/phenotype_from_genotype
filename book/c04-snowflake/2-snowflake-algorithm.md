@@ -40,7 +40,6 @@ The locations of the variants and the proteins that they are within may then be 
 
 The Snowflake phenotype prediction method works by identifying individuals who have unusual combinations of deleterious missense SNPs associated with a phenotype. 
 The phenotype predictor uses only data about missense SNPs in coding regions of globular proteins, so it can only be expected to work well where phenotypes are determined primarily by these kinds of mutations. 
-Because it works this way, it 
 
 This method combines conservation and variant effect scores using FATHMM{cite}`Shihab2013-pk`, inference about function of protein domains using dcGO{cite}`Fang2013-ms`, and human genetic variation data from the 2500 genomes project{cite}`Consortium2015-ci` to predict phenotypes of individuals based on their combinations of missense SNPs. 
 
