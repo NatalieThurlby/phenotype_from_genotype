@@ -646,8 +646,10 @@ title="Fullscreen mode"
 These predictions are based on how unusual an individual is for variants relating to each phenotype, and are made across a breadth of phenotypes and for missense variants across the protein-coding genome.
 It does this by combining existing predictions of variant deleteriousness from FATHMM<span id="id1">[<a class="reference internal" href="../cz-end-matter/reference.html#id58"><span>118</span></a>]</span> and association of protein domains to phenotypes from DcGO<span id="id2">[<a class="reference internal" href="../cz-end-matter/reference.html#id56"><span>114</span></a>]</span>, and finding unusual combinations of these variants through clustering individuals against a diverse background cohort and looking for outliers.
 The phenotype prediction implicitly contains protein function predictions, due to <a class="reference internal" href="../c03-compbio-background/4-comp-bio-methods.html#phenotype-protein-prediction-link"><span class="std std-ref">the relationship between protein function and phenotype</span></a>, and these are the key output of Snowflake.
+Focusing on protein domains thereby enables predictions in proteins that have not been well-studied, but restricts the number of predictions that Snowflake can make (since phenotypes can be caused by mutations which fall outside of domains).
 As a protein function predictor, Snowflake seeks rare combinations of SNPs which may influence a phenotype.
-In other words, Snowflake looks for the mechanisms behind complex traits, which are currently not well understood, but are thought to cause many human diseases.</p>
+In other words, Snowflake creates explanatory predictions: it looks for the mechanisms behind complex traits.
+Such complex traits are currently not well understood, but are thought to cause many human diseases.</p>
 <div class="section" id="motivation">
 <span id="snowflake-intro-motivation"></span><h2><span class="section-number">4.1.1. </span>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
 <p>In <a class="reference internal" href="../c02-biology-background/0-index.html#c02-biology-bg"><span class="std std-numref">chapter 2</span></a>, we discussed the theoretical mechanism from which phenotype arises from genotype.

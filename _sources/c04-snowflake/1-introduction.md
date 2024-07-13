@@ -3,9 +3,12 @@
 The Snowflake algorithm is primarily a phenotype prediction method: it takes data about individuals DNA as input and outputs predictions about which phenotypes each individual has. 
 These predictions are based on how unusual an individual is for variants relating to each phenotype, and are made across a breadth of phenotypes and for missense variants across the protein-coding genome. 
 It does this by combining existing predictions of variant deleteriousness from FATHMM{cite}`Shihab2013-pk` and association of protein domains to phenotypes from DcGO{cite}`Fang2013-ms`, and finding unusual combinations of these variants through clustering individuals against a diverse background cohort and looking for outliers.
-The phenotype prediction implicitly contains protein function predictions, due to {ref}`the relationship between protein function and phenotype<phenotype-protein-prediction-link>`, and these are the key output of Snowflake.
+The phenotype prediction implicitly contains protein function predictions, due to {ref}`the relationship between protein function and phenotype<phenotype-protein-prediction-link>`, and these are the key output of Snowflake. 
+Focusing on protein domains thereby enables predictions in proteins that have not been well-studied, but restricts the number of predictions that Snowflake can make (since phenotypes can be caused by mutations which fall outside of domains).
 As a protein function predictor, Snowflake seeks rare combinations of SNPs which may influence a phenotype.
-In other words, Snowflake looks for the mechanisms behind complex traits, which are currently not well understood, but are thought to cause many human diseases. 
+In other words, Snowflake creates explanatory predictions: it looks for the mechanisms behind complex traits.
+Such complex traits are currently not well understood, but are thought to cause many human diseases. 
+
 
 (snowflake-intro-motivation)=
 ## Motivation
