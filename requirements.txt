@@ -1,4 +1,14 @@
 jupyter-book == 0.10.2
+jinja2 < 3.1
+sphinx < 4
+
+# Later versions of the following packages (automatically installed with sphinx) require sphinx > 5.0, so must be pinned to v1.0.0
+sphinxcontrib-applehelp == 1.0.0
+sphinxcontrib-devhelp == 1.0.0
+sphinxcontrib-htmlhelp == 1.0.0
+sphinxcontrib-qthelp == 1.0.0
+sphinxcontrib-serializinghtml == 1.0.0
+
 jupytext
 sphinx-multitoc-numbering
 numba
@@ -9,7 +19,7 @@ psutil
 biopython
 pytest
 owlready2
-scikit-allel
+# scikit-allel
 scanpy
 sphinx_jupyterbook_latex
 ontolopy == 1.1.1b0
