@@ -1,6 +1,23 @@
 # phenotype_from_genotype
 Repo for tracking my thesis' conversion to jupyter book.
 
+## Setup:
+
+1. Clone git repo.
+
+2. Use a virtual environment:
+```bash
+
+python3 -m venv venv/
+source venv/bin/activate
+```
+
+3. Install requirements
+```bash
+pip3 install -r requirements.txt
+pip3 install -r requirements-dev.txt
+```
+
 ## Website:
 To build html:
 `jupyter-book build book`
