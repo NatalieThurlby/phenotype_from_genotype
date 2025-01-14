@@ -21,10 +21,14 @@ This section introduces the Snowflake algorithm, and gives an overview of how it
 ## Approach
 [//]: # (TODO: Cite most successful)
 Snowflake belongs to a small number of phenotype prediction methods that aim to predict across many phenotypes and many genotypes.
-Although it's designed primarily as a phenotype prediction algorithm, it also implicitly makes protein function predictions.
+Although it's designed primarily as a *phenotype* prediction algorithm, it also implicitly makes *protein function* predictions.
+Snowflake calculates a score for each phenotype for each individual (according to their genotype), and a cut-off is then used to convert these scores into binary predictions.
 
-Snowflake aims to not only create phenotype predictions, but to create explanatory predictions, where the relevant parts of the molecular biology (missense variants falling in protein domains) can be traced back and used to explore the prediction further.
-In this sense it contrasts to the black-box approaches that are currently most successful.
+In contrast to the black-box approaches that are currently most successful in terms of accuracy, Snowflake aims to create **explanatory** predictions. 
+This feature means that Snowflake has more utility in discovering new genetic mechanisms for disease.
+For any prediction (high-scoring genotype-phenotype pair according to Snowflake), Snowflake also reports which SNPs contributed to the prediction, how deleterious the SNP substituion is, and how rare the mutations are in the population. 
+Such an explanation is only possible because Snowflake restricts itself to missense mutations, since the deleteriousness is calculated by FATHMM from this information.
+In summary, Snowflake's design makes it more useful for finding candidate mutations that are responsible for phenotype, not for accurately predicting an individual's phenotype.
 
 
 <!--
