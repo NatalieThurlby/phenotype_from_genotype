@@ -3,6 +3,8 @@ Repo for tracking my thesis' conversion to jupyter book.
 
 ## Setup:
 
+0. Install Python, Install R
+
 1. Clone git repo.
 
 2. Use a virtual environment:
@@ -17,6 +19,9 @@ source venv/bin/activate
 pip3 install -r requirements.txt
 pip3 install -r requirements-dev.txt
 ```
+
+- Install IRkernel 
+`Rscript install.R`
 
 ## Website:
 To build html:
@@ -54,4 +59,12 @@ Next edit `_build/latex/thesis.tex`:
 Finally, move to the `latex` directory and run `make`.
 -->
 
-` jupyter-book build . --builder pdfhtml`
+<!-- ` jupyter-book build . --builder pdfhtml` (This doesn't work if you have a venv at the moment)-->
+
+
+
+`jupyter-book build book --builder pdfhtml --toc book/_toc.yml`
+- add page numbers from page 11 to end using [https://www.ilovepdf.com/add_pdf_page_number](https://www.ilovepdf.com/add_pdf_page_number)
+- remove first 2 pages in preview
+
+<!-- Note when you make the PDF, it will break the website html (there will be a new pdf html version), so you must then rebuild the normal version `juputer-book build book` -->
