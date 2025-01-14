@@ -716,10 +716,10 @@ is done in <a class="reference internal" href="../c06-filter/0-index.html#c06-fi
 <p>To illustrate the benefit of combining datasets, I will demonstrate that even the largest and most comprehensive gene expression experiments do not show all genes that are capable of expression being expressed.</p>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">cohen_kappa_score</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">cohen_kappa_score</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">myst_nb</span><span class="w"> </span><span class="kn">import</span> <span class="n">glue</span>
 
 <span class="n">chosen_tissue_group</span> <span class="o">=</span> <span class="s1">&#39;brain&#39;</span>  <span class="c1"># the only tissue group in all experiments</span>
 
@@ -855,7 +855,7 @@ I then identified a TPM cutoff per experiment to reduce noise by graphing pairs 
 <span class="n">combined_expression</span>
 
 <span class="c1"># convert to TPM</span>
-<span class="k">def</span> <span class="nf">tpm</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">lengths</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">tpm</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">lengths</span><span class="p">):</span>
     <span class="n">rpk</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">lengths</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;rows&#39;</span><span class="p">)</span>
     <span class="n">scaling_factor</span> <span class="o">=</span> <span class="n">rpk</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
     <span class="n">tpm</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span><span class="o">*</span><span class="n">rpk</span><span class="o">/</span><span class="n">scaling_factor</span>
@@ -871,8 +871,8 @@ I then identified a TPM cutoff per experiment to reduce noise by graphing pairs 
 </div>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
-<span class="kn">from</span> <span class="nn">plotly.subplots</span> <span class="kn">import</span> <span class="n">make_subplots</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">plotly.subplots</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_subplots</span>
 
 <span class="n">matched_samples</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">experiment</span> <span class="ow">in</span> <span class="n">design</span><span class="p">[</span><span class="s1">&#39;Experiment&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>    
@@ -1100,7 +1100,7 @@ Calculating the inter-rater reliability using Cohen’s Kappa (which adjusts for
     <span class="s1">&#39;GTEx&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="k">def</span> <span class="nf">calc_kappas</span><span class="p">(</span><span class="n">cut_offs</span><span class="p">,</span> <span class="n">experiments</span><span class="p">,</span> <span class="n">design_df</span><span class="p">,</span> <span class="n">exp_df</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calc_kappas</span><span class="p">(</span><span class="n">cut_offs</span><span class="p">,</span> <span class="n">experiments</span><span class="p">,</span> <span class="n">design_df</span><span class="p">,</span> <span class="n">exp_df</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cut_offs</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="n">cut_off_dict</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">experiment</span> <span class="ow">in</span> <span class="n">experiments</span><span class="p">:</span>
@@ -1198,8 +1198,8 @@ Calculating the inter-rater reliability using Cohen’s Kappa (which adjusts for
 </div>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">venn</span> <span class="kn">import</span> <span class="n">venn</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">venn</span><span class="w"> </span><span class="kn">import</span> <span class="n">venn</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
 <span class="n">expressed</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">experiment</span> <span class="ow">in</span> <span class="n">design</span><span class="p">[</span><span class="s1">&#39;Experiment&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>

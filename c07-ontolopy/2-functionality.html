@@ -917,7 +917,7 @@ This dictionary structure also allows you to add new terms.</p>
 </div>
 <div class="note admonition">
 <p class="admonition-title">Obo usage example</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ontolopy</span> <span class="k">as</span> <span class="nn">opy</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ontolopy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">opy</span>
 
 <span class="n">new_ontology</span> <span class="o">=</span> <span class="n">opy</span><span class="o">.</span><span class="n">Obo</span><span class="p">({</span><span class="s1">&#39;TERM:000001&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Example term&#39;</span><span class="p">}})</span>
 <span class="n">new_ontology</span><span class="p">[</span><span class="s1">&#39;TERM:000002&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Second example term&#39;</span><span class="p">,</span> <span class="s1">&#39;is_a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;TERM:000001&#39;</span><span class="p">]}</span>

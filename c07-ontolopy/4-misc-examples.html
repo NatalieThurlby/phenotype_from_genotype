@@ -660,10 +660,10 @@ These show how Ontolopy can be used to:</p>
 </div>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ontolopy</span> <span class="k">as</span> <span class="nn">opy</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
-<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ontolopy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">opy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">myst_nb</span><span class="w"> </span><span class="kn">import</span> <span class="n">glue</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="c1"># Read in files:</span>
 <span class="c1"># -------------</span>
@@ -907,7 +907,7 @@ This Ontolopy query can be done with only the FANTOM ontology.</p>
 For example, if we are interested in finding samples which are models for <code class="docutils literal notranslate"><span class="pre">DOID</span></code> disease terms, then we want to ask for <code class="docutils literal notranslate"><span class="pre">DOID</span></code> targets only, and <code class="docutils literal notranslate"><span class="pre">is_a</span></code> and <code class="docutils literal notranslate"><span class="pre">is_model_for</span></code> relationships only.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_disease_related_samples</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">ont</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_disease_related_samples</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">ont</span><span class="p">):</span>
     <span class="n">disease_relations_of_interest</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;is_a&#39;</span><span class="p">,</span><span class="s1">&#39;is_model_for&#39;</span><span class="p">]</span>
     <span class="n">disease_related</span> <span class="o">=</span> <span class="n">opy</span><span class="o">.</span><span class="n">Relations</span><span class="p">(</span>
         <span class="n">allowed_relations</span><span class="o">=</span><span class="n">disease_relations_of_interest</span><span class="p">,</span> 
@@ -1005,7 +1005,7 @@ is model for myeloid leukemia</td>
 </ol>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_differentiable_samples</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">ont</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_differentiable_samples</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">ont</span><span class="p">):</span>
     <span class="n">in_vivo</span> <span class="o">=</span> <span class="s1">&#39;FF:0000002&#39;</span>
     <span class="n">in_vivo_samples</span> <span class="o">=</span> <span class="n">opy</span><span class="o">.</span><span class="n">Relations</span><span class="p">(</span>
         <span class="n">allowed_relations</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;is_a&#39;</span><span class="p">],</span> 

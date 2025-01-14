@@ -759,9 +759,9 @@ While dcGO supports many other ontologies (e.g. Zebrafish and Xenopus ontologies
 <p>To create the Snowflake input for humans, files for the five relevant ontologies were downladed (for <a class="reference external" href="https://supfam.org/SUPERFAMILY/Domain2GO/Domain2DO.txt">DO</a>, <a class="reference external" href="https://supfam.org/SUPERFAMILY/Domain2GO/Domain2HP.txt">HP</a>, <a class="reference external" href="https://supfam.org/SUPERFAMILY/Domain2GO/Domain2GO_supported_only_by_all.txt">GO</a>, <a class="reference external" href="https://supfam.org/SUPERFAMILY/Domain2GO/Domain2CD.txt">MESH</a>, and <a class="reference external" href="https://supfam.mrc-lmb.cam.ac.uk/SUPERFAMILY/Domain2GO/Domain2MP.txt">MP</a>), then concatenated, and the GO cellular component and GO molecular function terms were removed (these term identifiers were extracted from the <code class="docutils literal notranslate"><span class="pre">GO_subontologies</span></code> field of the <code class="docutils literal notranslate"><span class="pre">Domain2GO_supported_only_by_all.txt</span></code> file).</p>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">myst_nb</span><span class="w"> </span><span class="kn">import</span> <span class="n">glue</span>
 
 <span class="n">notebook_name</span> <span class="o">=</span> <span class="s1">&#39;3-creating-inputs.ipynb&#39;</span> <span class="c1"># __file__ doesn&#39;t work in a jupyter notebook</span>
 
@@ -810,7 +810,7 @@ While dcGO supports many other ontologies (e.g. Zebrafish and Xenopus ontologies
     
 <span class="n">display</span><span class="p">(</span><span class="n">all_onts</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 
-<span class="k">def</span> <span class="nf">glue_counts_dcGO</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">glue_counts_dcGO</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Expects a DataFrame df that contains only ontology terms of interest.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -832,7 +832,7 @@ While dcGO supports many other ontologies (e.g. Zebrafish and Xenopus ontologies
 </div>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span> 
 
 <span class="n">lines_to_view</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8000</span><span class="p">,</span><span class="mi">20000</span><span class="p">,</span><span class="mi">50000</span><span class="p">]</span>
 <span class="n">view</span> <span class="o">=</span> <span class="n">HTML</span><span class="p">(</span><span class="n">all_onts</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">lines_to_view</span><span class="p">]</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span> 

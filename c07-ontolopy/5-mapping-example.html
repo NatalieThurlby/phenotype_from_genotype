@@ -846,14 +846,14 @@ The <code class="docutils literal notranslate"><span class="pre">Uberon</span></
 <p>In order to do this, I load the input FANTOM5 ontology and sample information files.</p>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ontolopy</span> <span class="k">as</span> <span class="nn">opy</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
-<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go_</span>
-<span class="kn">from</span> <span class="nn">plotly.subplots</span> <span class="kn">import</span> <span class="n">make_subplots</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ontolopy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">opy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">myst_nb</span><span class="w"> </span><span class="kn">import</span> <span class="n">glue</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go_</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">plotly.subplots</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_subplots</span>
 
 <span class="n">notebook_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
@@ -905,7 +905,7 @@ We use a merged sample (FANTOM) and tissue (Uberon) ontology as input.</p>
 
 <span class="n">total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">samples_info</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
 
-<span class="k">def</span> <span class="nf">get_mapped</span><span class="p">(</span><span class="n">mapping</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_mapped</span><span class="p">(</span><span class="n">mapping</span><span class="p">):</span>
     <span class="n">mapped</span> <span class="o">=</span> <span class="n">mapping</span><span class="p">[</span><span class="o">~</span><span class="n">mapping</span><span class="p">[</span><span class="s1">&#39;to&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
     <span class="n">unmapped</span> <span class="o">=</span> <span class="n">mapping</span><span class="p">[</span><span class="n">mapping</span><span class="p">[</span><span class="s1">&#39;to&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
     <span class="k">return</span> <span class="n">mapped</span><span class="p">,</span> <span class="n">unmapped</span>
@@ -981,7 +981,7 @@ We use a merged sample (FANTOM) and tissue (Uberon) ontology as input.</p>
 <span class="n">glue</span><span class="p">(</span><span class="s2">&quot;expect_map&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">expect_to_map</span><span class="p">),</span> <span class="kc">False</span><span class="p">)</span>
 <span class="n">glue</span><span class="p">(</span><span class="s2">&quot;num_expect_map_tissues&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">expect_to_map</span><span class="p">[</span><span class="n">tissue_col</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span> <span class="kc">False</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">list_to_text</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">list_to_text</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
     <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">text</span><span class="p">[:</span><span class="n">text</span><span class="o">.</span><span class="n">rindex</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; and&#39;</span> <span class="o">+</span> <span class="n">text</span><span class="p">[</span><span class="n">text</span><span class="o">.</span><span class="n">rindex</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
 
@@ -1323,7 +1323,7 @@ When both mappings are present and there is no relationship between them, this i
 <span class="n">glue</span><span class="p">(</span><span class="s1">&#39;overall-unique-tissues&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;overall&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span> <span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># Add overall to table</span>
-<span class="k">def</span> <span class="nf">format_mapped</span><span class="p">(</span><span class="n">mapped</span><span class="p">,</span> <span class="n">total</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">format_mapped</span><span class="p">(</span><span class="n">mapped</span><span class="p">,</span> <span class="n">total</span><span class="p">):</span>
     <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">mapped</span><span class="p">)</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">mapped</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">total</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%)&quot;</span>
 
 <span class="n">glue</span><span class="p">(</span><span class="s2">&quot;mapped-overall&quot;</span><span class="p">,</span> <span class="n">format_mapped</span><span class="p">(</span><span class="n">mapped_overall</span><span class="p">,</span> <span class="n">total</span><span class="p">),</span> <span class="kc">False</span><span class="p">)</span>
@@ -1338,7 +1338,7 @@ This is likely to have led to uncertainties in the sample ontology file, so by r
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Glue all values for the primary cell and tissues version of the table `coverage-tissue-primary-cell`</span>
-<span class="k">def</span> <span class="nf">primary_and_tissues</span><span class="p">(</span><span class="n">mapped</span><span class="p">,</span> <span class="n">unmapped</span><span class="p">,</span> <span class="n">samples_info</span><span class="p">,</span> <span class="n">name_string</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">primary_and_tissues</span><span class="p">(</span><span class="n">mapped</span><span class="p">,</span> <span class="n">unmapped</span><span class="p">,</span> <span class="n">samples_info</span><span class="p">,</span> <span class="n">name_string</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Removes non primary cell and tissue samples from the `mapped` and `unmapped` samples.&quot;&quot;&quot;</span>
     <span class="n">category_col</span> <span class="o">=</span> <span class="s1">&#39;Characteristics [Category]&#39;</span>
     <span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;primary cells&#39;</span><span class="p">,</span> <span class="s1">&#39;tissues&#39;</span><span class="p">]</span>
@@ -2151,7 +2151,7 @@ From this list <span class="pasted-text">10</span> tissues to remove were then m
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate number of mappings per UBERON term</span>
-<span class="k">def</span> <span class="nf">mapping_to_tissue_counts</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">mapping_to_tissue_counts</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Input formatted df</span>
 <span class="sd">    &quot;&quot;&quot;</span>
