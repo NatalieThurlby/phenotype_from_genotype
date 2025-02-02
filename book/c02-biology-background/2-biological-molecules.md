@@ -100,6 +100,11 @@ This can happen, for example, by skipping some of the exons during splicing.
 So, a more accurate statement is "DNA makes RNA*s*": there's not a one-to-one relationship between genes and transcripts, and therefore the same is true between genes and proteins.
 These different but related versions of proteins which come from the same gene are known as *protein isoforms*.
 
+Other post-transcriptional modifications can also affect transcription and therefore human disease. 
+Two key such modifications are RNA interference (RNAi) and RNA editing.
+RNAi relates to the degradation of mRNA before translation - this mechanism has been used to successfully create several drugs such as Givosiran which is used to treat rare metabolic diseases.
+Meanwhile RNA editing relates to all types of RNAs being edited after transcription - these modifications have also been linked to disease{cite}`li2014pivotal`.
+
 ```{margin} Epigenetic modifications
 :name: epigenetic-modifications
 
@@ -120,8 +125,8 @@ Proteins were discovered independently from DNA and RNA.
 They were named by Dutch chemist Gerardus Mulder in his 1839 paper{cite}`Mulder1839-rf`, where he found that all proteins from animals and plants have more or less the same elemental makeup -  approximately C<sub>400</sub>H<sub>620</sub>N<sub>100</sub>O<sub>120</sub>. 
 This intriguing result bolstered research in this area, eventually resulting in our current understanding of proteins as biological macromolecules composed of amino acids. 
 
-The fact that the sequence of amino acids was a code which precisely determined the three-dimensional structure of proteins was discovered by Christian Anfinsen and awarded the [1972 Nobel Prize](https://www.nobelprize.org/prizes/chemistry/1972/summary/). 
-This was achieved through a series of experiments, which for example, showed that a protein could be reduced to a string of amino acids, and then in the right conditions could refold to the exact original protein structure{cite}`anfinsen1961kinetics`.
+The fact that the sequence of amino acids was a code which precisely determined the three-dimensional structure of proteins was discovered by Christian Anfinsen for which he was awarded the [1972 Nobel Prize](https://www.nobelprize.org/prizes/chemistry/1972/summary/). 
+This was achieved through a series of experiments, which for example, showed that a protein could be reduced to a string of amino acids, and then in the right conditions could refold to the exact original protein structure{cite}`anfinsen1961kinetics,anfinsen1973principles`.
 
 (what-is-translation)=
 Translation describes the process in which a string of amino acids is created based on the RNA sequence.
@@ -154,8 +159,8 @@ Recently, this challenge has been conquered by machine-learning techniques by De
 
 ```
 
-Amino acid strings then fold reliably into 3-dimensional protein structures, sometimes with the help of other "chaperone" proteins.
-{ref}`We still don't understand how this happens very well.<protein-folding-problem>`
+Amino acid strings then fold reliably into 3-dimensional protein structures, sometimes with the help of other "chaperone" proteins. 
+Despite all science has long known about the chemistry governing the folding of amino acid chains, we {ref}`could not predict this very well until very recently.<protein-folding-problem>`
 
 (post-translational-modifications)=
 After translation, and either before or after folding{cite}`Uversky2013-bt`, proteins can also be subject to post translational modifications.

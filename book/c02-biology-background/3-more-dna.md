@@ -149,8 +149,10 @@ Some amino acids can be substituted without causing any difference to the functi
 ### Synonymous SNVs
 Synonymous SNVs occur where substituting the usual nucleotide with another results in the same amino acid. 
 The resulting protein will have the exact same functionality. 
-However, synonymous SNVs could still have an effect on high-level traits, since different nucleotides are translated at different speeds.
+However, synonymous SNVs could still have an effect on high-level traits.
+One reason for this is that different nucleotides are translated at different speeds.
 This difference in translation speed has been shown to impact on both folding and abundance of proteins{cite}`kimchi2007silent`. 
+Furthermore, this mechanism has been shown to affect multiple phenotypes{cite}`mccarthy2017bicodon`, for example lead to multidrug resistance of cancer cells{cite}`ambudkar2006power`.
 
 <!--
 [//]: # (TODO: Add a section about linkage disequalibrium/a mention of it ONLY if I have included it in Snowflake/Filter: From original:  Two alleles at given locations on the genome are in linkage disequilibrium when the association between them is more than would be expected at random. Linkage disequilibrium may occur between alleles even when there is no genetic linkage present, for example as a result of the presence of both alleles being selected for in a population.)
