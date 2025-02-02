@@ -1,5 +1,5 @@
 (c03-compbio-bg)=
-# How genotype and phenotype are measured and researched
+# How the link between genotype and phenotype is researched
 We have {ref}`just introduced<c02-biology-bg>` the biological mechanisms linking genotype and phenotype.
 Next, we will discuss the details of how this connection is studied, including how data about DNA and RNA is captured, organised and stored, and how this data is used in computational biology research.
 
