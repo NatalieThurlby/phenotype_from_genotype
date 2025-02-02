@@ -89,7 +89,7 @@ They can sometimes disagree on fundamental details such as locations of genes or
 :name: identifiers
 Persistent identifiers are long-lasting digital reference to entities{cite}`Meadows2019-zy`. 
 Gene names can change; scientists might agree to change them because Excel keeps converting them to dates{cite}`Vincent2020-ih` or because what were thought to be two genes turns out to be one.
-Gene identifiers should be unique and persistent over time, for example between genome builds and as more islearned about their function, but they can still be merged or retired.
+Gene identifiers should be unique and persistent over time, for example between genome builds and as more is learned about their function, but they can still be merged or retired.
 ```
 
 Each of these databases also have their own {ref}`identifiers<identifiers>` and these names and symbols can change over time. 

@@ -79,6 +79,9 @@ Once researchers had access to the whole genetic code for a person, they could s
 Watson's has publicly asserted that he believes differences in average measured IQ between blacks and whites are due to genetic differences{cite}`Harmon2019-na`.
 ```
 
-We now have thousands of human genomes to investigate, and the promises of gene therapies and personalised medicine are now beginning to become reality. 
+We now have thousands of human genomes to investigate.
+As I will explain, this enables the computational predictive methods that enable any characterisation of protein function for the majority of proteins, since the cost of alternative investigation of our complex network of proteins remains prohibitive. 
+
+The promises of gene therapies and personalised medicine are now beginning to become reality, due in part to computational biology and bioinformatics breakthroughs. 
 At the time of writing, there are eleven cell and gene therapies approved by the European Medicines Agency{cite}`Cynober2020-rx`, which treat a variety of cancers, as well as Crohn's disease, and eye and cartilage problems. 
 In addition, the first personalised genomic medicine chemotherapy treatment is now available on the NHS, for cancer patients with the allele of the [DYPD](https://www.genecards.org/cgi-bin/carddisp.pl?gene=DPYD) gene that cause slower breakdown of chemotherapy toxins{cite}`Guardian_staff_reporter2020-lb`.
