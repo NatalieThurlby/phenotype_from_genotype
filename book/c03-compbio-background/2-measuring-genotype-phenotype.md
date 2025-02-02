@@ -3,7 +3,7 @@
 [//]: # (TODO: Check through and signpost where resources are just humans or model organisms or loads of things)
 [//]: # (TODO: Have an aside about model organisms)
 This subsection now delves into the details of the data that is collected, looking in turn at measurements of {ref}`DNA<dna-measurements>`,  {ref}`RNA<rna-measurements>`, {ref}`proteins<protein-measurements>`, and {ref}`phenotypes<phenotype-measurements>`.
-This is to illustrate what kinds of data exist within the databases of the bioinformatics landscape, as well as some of the subtle issues that arise when using and linking them.
+This is to illustrate what kinds of data exist within the databases of the bioinformatics landscape, as well as some of the subtle issues that arise when using and linking them
 
 (dna-measurements)=
 ## DNA
@@ -33,7 +33,9 @@ When WGS is carried out for an organism that has already been sequenced, the seq
 This provides a more detailed and more accurate alternative to {ref}`genotyping<genotyping>` data.
 When cohorts have their whole genomes sequenced, this allows information from WGS data to be compressed into Variant Call Format (VCF) files, which stores only the allele calls for locations where there is variation in the population.
 
-Whole genomes for different species can be compared to one another to give us insight about these organisms, or within one species, individuals can be compared to understand the importance of genes or mutations for that organism.
+Whole genomes for different species can be compared to one another to give us insight about health and evolution. 
+This work can be comparisons within one species in which individuals of that species are compared, or comparisons across several species.
+This field is known as comparative genomics.
 Genomes from different species are stored in databases such as the University of California Santa Cruz (UCSC) Genome Browser database{cite}`Kent2002-jg`, the US National Centre for Biotechnology Information (NCBI) Genome Sequence database{cite}`Harger2000-vr`, or the European Bioinformatics Institute's (EBI) Ensembl Genome database{cite}`Hubbard2002-oi`.
 
 (human-reference-genome)=
@@ -133,7 +135,9 @@ Genes whose core functionality are to perform basic cell maintainance are known 
 ```
 
 As I've already explained RNA abundance in samples can be measured through RNA microarrays and RNA-Seq, and recently, RNA-Seq has been much more popular.
-Measures of mRNA abundance (i.e. gene expression data) are generally the most popular measures of translation (compared to {ref}`protein abundance<protein-abundance>` for example), and are therefore it is the most diverse data currently in databases, which makes it ideal for informing us how DNA's blueprints are being used in different {ref}`scenarios<gene-expression-scenarios>`.
+Measures of mRNA abundance (i.e. gene expression data) are generally the most popular measures of translation (which it is a proxy for), compared to the more direct measurement of {ref}`protein abundance<protein-abundance>` for example.
+
+The popularity of RNA-Seq therefore means it is the most diverse data currently in databases, which makes it ideal for informing us how DNA's blueprints are being used in different {ref}`scenarios<gene-expression-scenarios>`.
 Together with mappings, this data is used to understand the function of genes, to identify {ref}`housekeeping genes<housekeeping-genes>`, to re-engineer gene regulatory networks, and more - knowledge about DNA function that wouldn't be possible to glean without measuring RNA.
 Like other bioinformatics data, gene expression data is also available in databases such as the EBI's Gene Expression Atlas (GxA){cite}`Petryszak2016-je` and Single Cell Expression Atlas{cite}`Papatheodorou2020-ib` (for {ref}`bulk and single cell gene expression<bulk-scRNA-seq>`, respectively).
 
@@ -237,7 +241,7 @@ This type of data can suffer from biases due to what people feel comfortable ans
 
 Phenotype data must be connected to genotype data in order to be useful for validating genotype-to-phenotype predictions, and due to the sensitivity of this kind of information, there are a limited number of these kinds of data sets.
 Some data sets focus on particular phenotypes, while others are cohort studies that record everything about a cohort (for example the the Avon Longitudinal Study of Parents and Children, ALSPAC{cite}`Golding2001-oj`, and the UK Biobank{cite}`Bycroft2018-mw`). 
-In the latter case, it is not easy for researchers to access the whole data set, due to concerns about de-anonymisation{cite}`Powell2021-vc`.
+Even in data sets that contain the information, it is often not possible for researchers to access the whole data set, due to concerns about de-anonymisation{cite}`Powell2021-vc`.
 
 Knowledge about how phenotypes are related to each other (e.g. liver cancer is a type of cancer that is found in the liver) is organised in {ref}`ontologies<what-are-ontologies>`, which are described in their own section. 
 These ontologies also form a defined vocabulary for terms, with identifiers, definitions, and links to other information.
