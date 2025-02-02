@@ -12,8 +12,8 @@ sphinxcontrib-serializinghtml == 1.0.0
 jupytext
 sphinx-multitoc-numbering
 numba
-numpy == 1.20
-pandas >= 1.2.1
+numpy 
+pandas 
 plotly
 psutil
 biopython
