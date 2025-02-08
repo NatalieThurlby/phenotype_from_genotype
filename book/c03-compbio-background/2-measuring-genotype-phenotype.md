@@ -235,24 +235,26 @@ These structures are used for {ref}`protein classification<protein-classificatio
 As described in {numref}`what-is-phenotype`, most phenotypes that are studied today are based in medicine: this can range from the results of a blood test, to the presence of a disease diagnosis. 
 Neutral traits like height, eye colour, baldness, etc, are also sometimes measured.
 
-Phenotypic traits can be measured in a variety of ways, depending on the phenotype.
+Phenotypic traits can be measured in a huge variety of ways, depending on the phenotype.
 One important type is data collected via survey or interview, where participants self-identify as having certain illnesses, or symptoms.
 This type of data can suffer from biases due to what people feel comfortable answering{cite}`Furnham1986-yt,Knauper1994-wl`.
 
-Phenotype data must be connected to genotype data in order to be useful for validating genotype-to-phenotype predictions, and due to the sensitivity of this kind of information, there are a limited number of these kinds of data sets.
+An additional challenge is that phenotype data must be connected to genotype data in order to be useful for validating genotype-to-phenotype predictions/
+Due to the sensitivity of this kind of information, there are a limited number of these kinds of data sets.
 Some data sets focus on particular phenotypes, while others are cohort studies that record everything about a cohort (for example the the Avon Longitudinal Study of Parents and Children, ALSPAC{cite}`Golding2001-oj`, and the UK Biobank{cite}`Bycroft2018-mw`). 
-Even in data sets that contain the information, it is often not possible for researchers to access the whole data set, due to concerns about de-anonymisation{cite}`Powell2021-vc`.
+Even in data sets that contain the necessary information, it is often not possible for researchers to access the whole data set, due to concerns about de-anonymisation{cite}`Powell2021-vc`.
 
-Knowledge about how phenotypes are related to each other (e.g. liver cancer is a type of cancer that is found in the liver) is organised in {ref}`ontologies<what-are-ontologies>`, which are described in their own section. 
+Some knowledge about how phenotypes are related to each other (e.g. liver cancer is a type of cancer that is found in the liver) is organised in {ref}`ontologies<what-are-ontologies>`, which are described in their own section. 
 These ontologies also form a defined vocabulary for terms, with identifiers, definitions, and links to other information.
-This information can then be used as one way to investigate the connection between genotype and phenotype.
+
+This huge variety of human phenotype information (questionnaire data, lab results, ontologies, etc) can then be used to investigate the connection between genotype and phenotype.
 
 (connection-genotype-phenotype)=
-## Measuring the connection between genotype and phenotype
+## Methods for measuring the connection between genotype and phenotype
 
 [//]: # (TODO: Mention molecular dynamics)
 
-There are many different methods of investigating the connection between genotype and phenotype.
+Having collected data genotype and phenotype data, there are a number of different methods of investigating the connection between genotype and phenotype.
 Some methods focus solely on the "what", seeking to answer the question "*what phenotypes(s)* does this gene have an effect on?", while some focus also on the "how", i.e. answering "*what is the mechanism* behind this phenotype?".
 {ref}`Genome Wide Association Studies (GWAS)<observational-studies>` are the most popular way of finding potential or actual "what" connections, while {ref}`gene knockouts<gene-knockouts>` and building {ref}`biological pathways<biological-pathways>` is currently the main way of finding "why" connections.
 There are also many more specific kinds of experiments which can contribute pieces of the puzzle. 
