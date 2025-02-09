@@ -17,21 +17,13 @@ Once again, these details are introduced from big to small scale, beginning with
 [//]: # (TODO: MEntion anyone can submit/collaborative nature of databases)
 Whole genome sequencing (WGS) is the sequencing of {ref}`all<really-wgs>` the genetic material of an organism, whether or not it is transcribed into RNA, or translated into protein.
 In humans, this includes all chromosomal and mitochondrial DNAs.
-Whole genomes are {ref}`sequenced<sequencing>` and {ref}`assembled<assembly-and-alignment>` as previously described.
+Whole genomes are {ref}`sequenced<sequencing>` and {ref}`assembled<assembly-and-alignment>` as previously described. 
 
 ```{margin} The *whole* genome?
 :name: really-wgs
 In practice, almost complete genomes are also referred to as whole genomes, particularly for more complex genomes.
 Even the human genome still a small outstanding amount of unassembled DNA{cite}`Miga2015-zl` - satellite DNA which is thought to be part of the structure of chromosomes.
 ```
-
-[//]: # (TODO: Mention 1000Genomes?)
-[//]: # (TODO: Remove mention of VCF here as I explain it later and it's not really relevant yet here)
-
-(individual-wgs)=
-When WGS is carried out for an organism that has already been sequenced, the sequence data is mapped to the organism's {ref}`reference genome<human-reference-genome>`.
-This provides a more detailed and more accurate alternative to {ref}`genotyping<genotyping>` data.
-When cohorts have their whole genomes sequenced, this allows information from WGS data to be compressed into Variant Call Format (VCF) files, which stores only the allele calls for locations where there is variation in the population.
 
 Whole genomes for different species can be compared to one another to give us insight about health and evolution. 
 This work can be comparisons within one species in which individuals of that species are compared, or comparisons across several species.
@@ -77,8 +69,17 @@ This includes formatting differences (storing chromosome as integers rather than
 (gene-measurement)=
 ### Genes
 Once scientists have an {ref}`assembled<assembly-and-alignment>` genome, genes are identified within them.
-The first step in this process is to look for nucleotides that code for the start codon (i.e. the amino acid methionine) (`ATG`) and end with one of the stop codons (`TAA`, `TGA`, or `TAG`).
-The potential genes found through this search are then checked in the lab, e.g. through sequencing transcripts.
+This is part of the process of {ref}`structural annotation<structural-annotation>`. 
+
+```{margin} Structural annotation
+:name: structural-annotation
+Genome annotation originally focused solely on discovering the locations of protein-coding gene.
+While gene discovery remains a big focus, structural annotation now also includes the prediction of other features such as non-coding genes and transcription factor binding- or DNA methylation sites.
+These features are identified by complex predictive algorithms, which can be *ab initio* (often HMM-based), homology-based, or a combination{cite}`ejigu2020review`. 
+
+Intron-exon distances and base and codon distributions, among other data are as predictive features.
+Obserbed start (i.e. the amino acid methionine - `ATG`) and stop (`TAA`, `TGA`, or `TAG`) codons are useful in validating structural annotation algorithms. 
+```
 
 Like whole genomes, the sequences and positions of genes relative to the reference genome are stored in databases.
 Again these are part of the UCSC, NCBI and EMBL-EBI ecosystem and these resources are vital to bioinformatics.
@@ -104,9 +105,14 @@ This missing functional information is not likely to appear soon, without some s
 
 (variants-measurements)=
 ### Variants
-Information about which variants individuals have comes from either {ref}`genotype<genotyping>` or {ref}`whole genome sequencing<individual-wgs>` data.
-Some of this data is owned by private companies, such as 23andMe.
+Information about which variants individuals have comes from either {ref}`genotype<genotyping>` or whole genome sequencing (WGS) data.
 
+(individual-wgs)=
+When WGS is carried out for an organism that has already been sequenced, the sequence data is mapped to the organism's {ref}`reference genome<human-reference-genome>`.
+When cohorts have their whole genomes sequenced, this allows information from WGS data to be compressed into Variant Call Format (VCF) files, which stores only the allele calls for locations where there is variation in the population.
+This provides a more detailed and more accurate alternative to {ref}`genotyping<genotyping>` data.
+
+Some variant data is owned by private companies, such as 23andMe.
 Databases like dbSNP{cite}`Sherry2001-nm`, clinVar, and SNPedia contain information about the location of these variants, their possible alleles, their frequency in populations, their functions, and associated phenotypes. 
 
 The largest SNP database - NCBI’s dbSNP{cite}`Sherry2001-nm` - contains information from ten organisms (including human) and has information on indels and short tandem repeats in addition to SNPs. 
