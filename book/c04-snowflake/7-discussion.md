@@ -9,20 +9,9 @@ The most time-consuming aspect of working on Snowflake was it's Research Softwar
 Test suite
 Documentation
 ??? Publishing
+-->
 
-## Dependencies and interoperability
-[//]: # (TODO: Write from RSE oint of view)
-The phenotype predictor relies heavily on all forms of it's input data: `dcGO`, `FATHMM` and the background cohort.
-`dcGO` decides which SNPs we consider at all for a phenotype, while `FATHMM` decides to what extent SNPs within that set would be interesting if we see a rare combination.
-And how rare the combination appears is defined by the background cohort.
-A limitation of this method is that it's hard to test Snowflake's approach to combining these types of data and clustering independently from these inputs.
-
-Snowflake uses FATHMM-MKL rather than the newer FATHMM-XF. 
-[//]: # (TODO: Cite FATHMM-XF and various independent)
-
-FATHMM-XF is my many independent researchers, the most accurate variant prioritisation tool currently available, much more so than FATHMM-MLK.
-FATHMM-MKL is constrained to build 37 of the human reference genome which is no longer up to date.
-
+<!-->
 ### Background
 - 1000 genomes has different priorities than us: does not care about rare SNPs - most likely to cause rare diseases
 - As diverse a bg set as we can get, but not very diverse.
@@ -77,9 +66,10 @@ Despite much development effort, there remain some idiosyncrasies to the predict
 For example, DcGO can map multiple terms to the same set of SNPs. 
 This can sometimes be a diverse group of phenotypes which do not tend to co-occur in individuals and when this occurs, it is likely that we cannot make a good prediction. 
 A semantic similarity measure, such as GOGO{cite}`Zhao2018-rw` or Wang’s method{cite}`Wang2007-yc` could be used to check this, and update the confidence score accordingly.
+It might be possible that constraining DcGO to use only more closely related species rather than the whole tree of life might be preferable for this task, however, this would be a trade off, as this change would also affect the predictor's coverage of both phenotypes and variants.
 
 (coverage)=
-### Coverage: Synonymous SNPs, nonsense and non-coding variants
+### Coverage of variants: Synonymous SNPs, nonsense and non-coding variants
 [//]: # (TODO: Explain why not included)
 There are also clearly many aspects of the molecular biology mentioned in {numref}`chapter %s<c02-biology-bg>` that are not represented in the model used by the phenotype predictor. 
 For example nonsense mutations, synonymous SNPs, regulatory networks, and non-coding variants. 
@@ -223,4 +213,25 @@ While some of these may seem far-fetched, Snowflake has already been trialled by
 The question of whether we "could" predict phenotype accurately is also a huge ethical barrier to using it at present. 
 Currently, it's not clear to what extent, or for which types of variants, the phenotype predictor works.
 The next chapter explains my attempts to validate the predictor using the ALSPAC dataset.
+
+## Future work 
+
+### Dependencies, interoperability & simulating data
+The phenotype predictor relies heavily on all forms of it's input data: `dcGO`, `FATHMM` and the background cohort.
+`dcGO` decides which SNPs we consider at all for a phenotype, while `FATHMM` decides to what extent SNPs within that set would be interesting if we see a rare combination.
+And how rare the combination appears is defined by the background cohort.
+A limitation of this method is that it's hard to test Snowflake's approach to combining these types of data and clustering independently from these inputs.
+
+I believe a synthetic (simulated) dataset would be important for testing any future iteration of Snowflake.
+
+### Update input components
+All three of Snowflake's input components (`dcGO`, `FATHMM` and the background cohort) have many possible choices - and while it is most important to find good test data, should that be found, finding the best choices of components would be a priority.
+
+For example, Snowflake uses FATHMM-MKL rather than the newer and much more accurate FATHMM-XF. 
+FATHMM-MKL is constrained to build 37 of the human reference genome which is no longer up to date.
+
+## Conclusions
+While the results of my application of Snowflake to ALSPAC were disappointing, my technical contributions to Snowflake included finding and fixing crucial bugs, which allowed it to go on to it's latest and most successful iteration as Nomaly{cite}`lu2023hypothesis`.
+
+Snowflake (and Nomaly) represent a highly novel approach to phenotype and variant function prediction, and it is possible that it's limitations can be overcome as new datasets become available.
 
