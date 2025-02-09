@@ -71,14 +71,14 @@ This includes formatting differences (storing chromosome as integers rather than
 Once scientists have an {ref}`assembled<assembly-and-alignment>` genome, genes are identified within them.
 This is part of the process of {ref}`structural annotation<structural-annotation>`. 
 
-```{margin} Structural annotation
+```{margin} Structural/gene annotation 
 :name: structural-annotation
 Genome annotation originally focused solely on discovering the locations of protein-coding gene.
 While gene discovery remains a big focus, structural annotation now also includes the prediction of other features such as non-coding genes and transcription factor binding- or DNA methylation sites.
 These features are identified by complex predictive algorithms, which can be *ab initio* (often HMM-based), homology-based, or a combination{cite}`ejigu2020review`. 
 
 Intron-exon distances and base and codon distributions, among other data are as predictive features.
-Obserbed start (i.e. the amino acid methionine - `ATG`) and stop (`TAA`, `TGA`, or `TAG`) codons are useful in validating structural annotation algorithms. 
+Observed start (i.e. the amino acid methionine - `ATG`) and stop (`TAA`, `TGA`, or `TAG`) codons are useful in validating structural annotation algorithms. 
 ```
 
 Like whole genomes, the sequences and positions of genes relative to the reference genome are stored in databases.

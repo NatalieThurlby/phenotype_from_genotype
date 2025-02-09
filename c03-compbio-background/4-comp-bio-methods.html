@@ -712,7 +712,7 @@ Here I describe some of the challenges and methods in this space, many of which 
 <div class="section" id="prediction-tasks-protein-classification-prediction">
 <span id="protein-classification-prediction"></span><h2><span class="section-number">3.4.1. </span>Prediction tasks: Protein classification prediction<a class="headerlink" href="#prediction-tasks-protein-classification-prediction" title="Permalink to this headline">¶</a></h2>
 <p>As <a class="reference internal" href="../c02-biology-background/4-more-proteins.html#protein-classification"><span class="std std-ref">previously mentioned</span></a>, proteins are often classified by structural similarities.
-This information is often used because researchers identify a gene of interest, but information about it’s function or structure (in PDB) has not yet been captured and stored.
+This information is often used because researchers identify a gene of interest, but information about it’s function or structure (in PDB) has not yet been captured and stored (i.e. the protein is “uncharacterised”).
 In such cases, it’s often necessary to make inferences about protein structure or function based on their similarity to known proteins.
 This is sometimes done using sequence similarity (e.g. <a class="reference internal" href="#blast"><span class="std std-ref">BLAST</span></a>), but sequence similarity can vary considerably between proteins with the same underlying structure.
 This is why structural similarity searches based on protein classification are preferred.</p>
@@ -731,18 +731,31 @@ The CATH (Class, Architecture, Topology, Homologous superfamily)<span id="id5">[
 </div>
 <div class="section" id="superfamily">
 <span id="superfamily-update"></span><h3><span class="section-number">3.4.1.2. </span>SUPERFAMILY<a class="headerlink" href="#superfamily" title="Permalink to this headline">¶</a></h3>
-<p>SUPERFAMILY<span id="id7">[<a class="reference internal" href="../cz-end-matter/reference.html#id53"><span>113</span></a>]</span> uses Hidden Markov Models (HMMs) to assign sequences to SCOP domains, primarily at the superfamily level.
-This allows the functions of poorly understood proteins to be inferred based on how closely they match known superfamilies.
-HMMs are very successful at such assignments since pairwise correlations between proteins (or their domains) and other proteins in the family may be weak, but consistently for many proteins; this can be picked up by an HMM.
+<p>SUPERFAMILY<span id="id7">[<a class="reference internal" href="../cz-end-matter/reference.html#id53"><span>113</span></a>]</span> is structural annotation procedure and associated web resource, which uses Hidden Markov Models (HMMs) to assign sequences to SCOP domains, primarily at the superfamily level.
+This is a process analagous to <a class="reference internal" href="2-measuring-genotype-phenotype.html#structural-annotation"><span class="std std-ref">gene annotation</span></a>.</p>
+<div class="figure align-default" id="superfamily-assignment">
+<a class="reference internal image-reference" href="../_images/superfamily-assignment.png"><img alt="../_images/superfamily-assignment.png" src="../_images/superfamily-assignment.png" style="height: 500px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 3.5 </span><span class="caption-text">Domain assignments for <a class="reference external" href="https://www.ensembl.org/Homo_sapiens/Transcript/ProteinSummary?g=ENSG00000104447%3Br=8:115412549-115668702%3Bt=ENST00000220888"><code class="docutils literal notranslate"><span class="pre">ENSP00000220888.5</span></code></a> - a human protein.
+The image shows the protein is mostly not made up of protein domains, but has two domains assigned, highlighted in blue (<em>Glucocorticoid receptor-like (DNA-binding domain)</em>) and red (<em>beta-beta-alpha</em> zinc fingers).</span><a class="headerlink" href="#superfamily-assignment" title="Permalink to this image">¶</a></p>
+</div>
+<p>This domain assignment is also used as a form of functional annotation and allows the functions of poorly understood proteins to be inferred based on how closely they match known superfamilies.
+This is how the website is frequently used - as it allows users to search a new sequence and see which domains are predicted to fall in the sequence and where.
+It is also possible to see domain assignments of known proteins, e.g. by ENSP (Ensembl Protein ID), see <a class="reference internal" href="#superfamily-assignment"><span class="std std-numref">Fig. 3.5</span></a>.</p>
+<p>HMMs are very successful at such assignments since pairwise correlations between proteins (or their domains) and other proteins in the family may be weak, but consistently for many proteins; this can be picked up by an HMM.
 The superfamily level is chosen since it is the broadest level which suggests evolutionary relationships, but SUPERFAMILY also generates assignments at the (stricter) family level.</p>
 <p>HMMs are created by first finding closely relating protein homologs for a given protein superfamily using <a class="reference internal" href="#blast"><span class="std std-ref">BLAST</span></a>, and then extending it by comparing the HMM to more distantly related homologs.
 The resulting HMM library is fine-tuned by some manual curation.</p>
-<p>The SUPERFAMILY website also contains other tools, including a database of all sequences (genomes) which are used to generate the HMM library.</p>
-<p id="my-superfamily-contribution"><strong>SUPERFAMILY update</strong>
-I contributed to SUPERFAMILY’s 2014 update<span id="id8">[<a class="reference internal" href="../cz-end-matter/reference.html#id8"><span>3</span></a>]</span> by editing the paper and adding a small number of proteomes.
-The SUPERFAMILY database of proteomes doubled from 1400 to over 3200 from 2010 to 2014.
-The update paper described this development, as well as highlighting SUPERFAMILY as a resource for unique proteomes that are not found elsewhere (e.g. Uniprot).
-Although SUPERFAMILY’s primary resource is it’s HMM library, it also integrates a range of other tools for sequence analysis, for example protein disorder prediction (D2P2) and GO annotation (dcGO), as well as a domain-based phylogenetic tree (sTol).</p>
+<p>Although SUPERFAMILY’s primary resource is it’s HMM library, it also integrates a range of other tools for sequence analysis, for example protein disorder prediction (D2P2) and GO annotation (dcGO), as well as a domain-based phylogenetic tree (sTol).
+In addition, SUPERFAMILY makes available all sequences that it uses to build HMM models, some of which cannot be found elsewhere.</p>
+<p id="my-superfamily-contribution"><strong>SUPERFAMILY update</strong></p>
+<div class="hint admonition">
+<p class="admonition-title">Contributions in this section</p>
+<p>The SUPERFAMILY website and resources were jointly maintained between members of Computational Biology group (then) at Bristol, which involved replying to user emails, and updates to the website.</p>
+<p>In 2014, a SUPERFAMLIY update paper was published. I contributed by editing the paper and adding a small number of proteome sequences in the class Cyanophyceae - 5 of the proteomes available on SUPERFAMILY.</p>
+</div>
+<p>I contributed to SUPERFAMILY’s 2014 update<span id="id8">[<a class="reference internal" href="../cz-end-matter/reference.html#id8"><span>3</span></a>]</span>.
+The SUPERFAMILY database of proteomes doubled from 1400 to over 3200 from 2010 to 2014, containing sequences from across the tree of life, including  1714 species and 1544 strains.
+The update paper described this development, as well as highlighting SUPERFAMILY as a resource for unique proteomes that are not found elsewhere (e.g. Uniprot), and describing the update to the (at the time) most recent human reference genome.</p>
 </div>
 </div>
 <div class="section" id="prediction-tasks-protein-function-prediction">
