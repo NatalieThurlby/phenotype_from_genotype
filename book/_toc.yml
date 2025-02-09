@@ -42,16 +42,17 @@
       - file: c04-snowflake/3-creating-inputs
       - file: c04-snowflake/4-preprocessing
       - file: c04-snowflake/5-clustering-snps
+      - file: c04-snowflake/6-alspac
 #      - file: c04-snowflake/6-making-predictions
       - file: c04-snowflake/7-discussion
 #      - file: c04-snowflake/8-future-work
-  - file: c05-alspac/0-index
-    sections:
-      - file: c05-alspac/1-introduction
-#      - file: c05-alspac/2-data
-#      - file: c05-alspac/3-methodology
-#      - file: c05-alspac/4-results
-      - file: c05-alspac/5-discussion
+#   - file: c05-alspac/0-index
+#     sections:
+#       - file: c05-alspac/1-introduction
+# #      - file: c05-alspac/2-data
+# #      - file: c05-alspac/3-methodology
+# #      - file: c05-alspac/4-results
+#       - file: c05-alspac/5-discussion
 
 - part: Tissue-specific gene expression
   numbered: true
