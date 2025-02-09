@@ -23,7 +23,8 @@ If whole genome (or genotype) based phenotype prediction was possible, only one 
 Applied to the plant and animal kingdom, phenotype prediction could also be beneficial in veterinary science and agriculture.
 
 [//]: # (TODO: Dicuss complex traits, missing/hidden heritability)
-The discovery of underlying mechanisms for complex traits remains a particular challenge.
+The discovery of underlying mechanisms for complex traits remains a particular challenge. 
+Each prediction in snowflake can be explained by which protein the variant is in, why that protein is predicted to be deleterious, and how common or rare that variant is. 
 
 (snowflake-related-work)=
 ## Related work

@@ -80,7 +80,7 @@ However, it does not take into account the structure of the redundancy.
 
 ```{figure} ../images/snowflake-overview-new.png
 ---
-width: 250px
+width: 300px
 name: snowflake-overview
 ---
 Flowchart showing an overview of the phenotype predictor. Scores are generated per allele using SUPERFAMILY, VEP, FATHMM and dcGO for both the input genotype(s), and the background genotypes. These data points are then combined into a matrix, which is then clustered.
@@ -91,18 +91,22 @@ The `Snowflake` algorithm predicts phenotype by finding individuals who have unu
 -->
 
 {numref}`snowflake-overview` shows how an overview of how Snowflake operates. 
-One or more genotypes (in VCF or 23andMe format) are needed: this is the *input cohort*. The algorithm can then be divided into three main steps:
+One or more genotypes (in VCF or 23andMe format) are needed: this is the *input cohort*. The algorithm can then be divided into four main steps:
 1. Score variants for deleteriousness, using FATHMM and VEP
+  - This is the process of creating the `.consequence` files.
 2. Map variants to phenotype, using dcGO and SUPERFAMILY
-3. Cluster individuals per phenotype and extract score, using {abbr}`IDOS (Intrinsic Dimensionality Outlier Score)`. Each genotype will be compared against all others, including (optionally) a diverse background set from the 2500 Genomes Project{cite}`Consortium2015-ci`. 
+  - For each phenotype $i$, a list of SNPs is generated such that the SNPs are associated with the phenotype (according to dcGO), and the SNPs are present in the input individuals. These list of SNPs is stored in `.snp` files.
+3. Cluster individuals using OPTICS per against all others and (optionally) a diverse background set from the 2500 Genomes Project{cite}`Consortium2015-ci`.
+  - Cluster using SNPs as features.
+4. Extract a score and prediction. 
 
-Further detail on these steps is provided below.
+Further detail on these steps is provided below. 
 
-<!--
-Each of these steps is modular, meaning that it's possible to use another method (other than `fathmm`) to predict the deleteriousness of variants, to map variants to phenotype, or to cluster individuals and extract the score.
--->
+Step 1 and 2 are actually carried out through creating Snowflake inputs, which I describe in greater detail {ref}`it's own section<creating-snowflake-inputs>`.
 
-<!--
+Each of these steps is modular, meaning that it's possible to use another method to predict the deleteriousness of variants, to map variants to phenotype, or to cluster individuals or to extract the score.
+
+<!-- 
 1. For each phenotype $i$, a list of SNPs is generated such that the SNPs are associated with the phenotype (according to dcGO), and the SNPs are present in the input individuals.
 2. The input SNPs are given deleterious scores (using FATHMM), and this us used to construct an $N_{i}\times M$ matrix of scores is created based on the individual’s alleles for each of these SNPs, (where $N$=number of SNPs and $M$=number of individuals).
 3. Individuals of interest are clustered by SNP, alongside a diverse background of other people
@@ -140,7 +144,7 @@ It is therefore the combination of SNPs per phenotype, and their rarity in the p
 [//]: # (TODO: Rewrite this part - when do we require a background data set and why. What is clustering. Link to the work in the later section comparing clustering methods.)
 Individuals are compared to all others through clustering. This usually includes comparing each individual to the genetically diverse background of the 2500 genomes project{cite}`Consortium2015-ci`.
 
-Clustering is the task of grouping objects into a number of groups (clusters) so that items in the same cluster are similar to each other by some measure. There are many clustering algorithms, but most are unsupervised learning algorithms which iterate while looking to minimise dissimilarity in the same cluster. A number of options were implemented for the predictor, but for the time being at least, OPTICS is used as a default.
+Clustering is the task of grouping objects into a number of groups (clusters) so that items in the same cluster are similar to each other by some measure. There are many clustering algorithms, but most are unsupervised learning algorithms which iterate while looking to minimise dissimilarity in the same cluster. A number of options were implemented for the predictor, but OPTICS is used as a default for theoretical reasons, which I describe in {ref}`the next section<clustering-snps>`.
 
 (individual-score)=
 ### Phenotype score
@@ -160,11 +164,20 @@ It is defined by {math}`tfidf=tf(t,d) \cdot idf(t,D) = (f_{t,d}) \cdot (\frac{N}
 
 The global-local score is designed to balance these sources of interest. 
 It sums the two scores, adjusting the weighting by a cluster size correction factor, $\mu_{\gamma}$:
-$score_{ij}=L_{ij}+\mu_{\gamma} \cdot G_{ij}$
+$GL_{ij}=L_{ij}+\mu_{\gamma} \cdot G_{ij}$
 
 Such that: $\mu_{\gamma}=\frac{exp(\gamma \frac{n-n_j}{n})-1}{exp(\gamma)-1}$ where $\gamma$ is a parameter representing how strongly we wish to penalise large clusters, $n$ is the over all number of individuals and $n_j$ is the number of individuals in a cluster.
 
 The global-local score was inspired by the {ref}`tf-idf<tf-idf>` score popular in Natural Language Processing bag-of-word models. 
+
+The global-local score is always greater than zero, but it has no upper limit because the largest possible score than an individual can have depends on the number of high-scoring SNPs and the magnitude of the FATHMM score. 
+For this reason, the global-local score is transformed to a score that is comparable between phenotypes, using a formula first introduced in the earlier Proteome Quality Index paper{cite}`Zaucha2015`:
+
+${s}_{{trans}}(p)=^3{\sqrt {\frac{{e}^{-\left(1+\tfrac{{s}_{{rank}}(p)}{N}\right)\varphi }}{{e}^{-\varphi }}\cdot \frac{s(p)}{\mathop{\sum}\limits_{p}s(p)}\cdot \frac{s(p)-{{{{{\rm{min }}}}}}\,s(p)}{{{{{{\rm{max }}}}}}\,s(p)-{{{{{\rm{min }}}}}}\,s(p)}}}$
+
+Where $s_{{trans}}(p)$ is the transformed score for a person, $s(p)$ is the original score, ${s}_{{rank}}$ is the rank of a person within a phenotype, and ${\varphi}$ determines the importance of rank.
+
+The transformed score is usually negative, with a small number of scores per phenotype being 0 or slightly above, which are interpreted as positive predictions. 
 
 (snowflake-functionality)=
 ## Functionality
@@ -243,7 +256,7 @@ These changes are explained {ref}`later in this Chapter<curse-of-dimensionality-
 
 (phenotype-score)=
 ### Confidence score per phenotype
-The phenotype predictor outputs a score for each person for each phenotype. 
+The phenotype predictor outputs a {ref}`phenotype score <individual-score>` for each person for each phenotype. 
 Our confidence in these scores depends on the distribution of scores, as well as the scale of them. 
 A distribution of scores with distinct groups of individuals is generally preferable, since most phenotypes that we are interested in are categorical or it is at least more useful to highlight phenotypes that can be predicted this way (i.e. if there are 100 groups with varying risk of a disease, that would be less useful than knowing there are 2 groups with high/low risk). 
 

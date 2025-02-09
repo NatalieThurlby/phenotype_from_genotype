@@ -44,7 +44,6 @@ Data is simulated for the following cases, representing the diversity of phenoty
 ## Combinations of SNPs
 
 [//]: # (TODO: Maths not displaying on PDF)
-[//]: # (TODO: Check how fathmm works, is it across all superkingdoms?)
 
 [//]: # (TODO: tie in this section with the curse of dimensionality part)
 Given $N$ SNPs of interest, there are $3^N$ different options for individual's combinations of calls for biallelic SNPS, since there are three different options for each SNP `WW` wild-wild homozygous, `MW`/`WM` heterozygous, or `MM` mutant-mutant heterozygous.
@@ -340,3 +339,8 @@ Linear distance metrics. $MM$ denotes homozygous mutant alleles, $WW$ denotes ho
 -->
 
 [//]: # (TODO: Add making predictions back into TOC)
+
+## Necessity of a genetically diverse background set
+Rare variants are generally specific to continental groups{cite}`sudmant2015integrated`. 
+Since snowflake is essentially a detector of rare variants (weighted by deleteriousness), it is not hard to imagine how this could lead to many spurious phenotype prediction results if one african was compared to many europeans (or vice versa). 
+Particularly, this is true, because Snowflake calculates it's phenotype score by summing distances between individuals over all phenotype-related SNPs (which could be over 100).

@@ -220,6 +220,7 @@ This constrains the proteins and phenotypes which Snowflake can make predictions
 
 As described in the overview, Snowflake requires genetic "background" data to compare the individuals we are interested in against, i.e. so that meaningful clustering can take place. 
 Although Snowflake has the functionality to be run with any background data set, the choice of data set is constrained since it must contain representative genetic data from from the entire population.
+The 1000 Genomes project{cite}`Consortium2015-ci,1000_Genomes_Project_Consortium2012-ek` was therefore the perfect choice as it was designed to map common human genetic variation across diverse populations, despite being much smaller than some other cohorts available, such as UK Biobank{cite}`halldorsson2022sequences`.
 
 (acquire-1000G)=
 ### Data acquisition: the 1000 Genomes project

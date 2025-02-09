@@ -7,7 +7,7 @@
 [//]: # (TODO: Cross-reference to the sections of the Chapter)
 
 This chapter describes the Snowflake algorithm for phenotype prediction that I developed in collaboration with Jan Zaucha, Ben Smithers and Julian Gough. 
-The development of `snowflake` resulted in a patent{cite}`Gough2017-ik`, of which I am an author.
+The development of `snowflake` resulted in a patent{cite}`Gough2017-ik`, of which I am an author, and later a paper{cite}`lu2023hypothesis` (the latest iteration of the tool is now called `Nomaly`).
 This chapter deals with the functionality and design of the Snowflake algorithm, while the {ref}`next<c05-alspac>` describes it's application to the ALSPAC dataset.
 
 At it's heart, Snowflake is a {abbr}`CLI (Command Line Interface)` tool and private Python package that allows the user to detect outliers for each phenotype of interest, according to their genotype. 
@@ -31,8 +31,10 @@ Working from Ben's translation, Jan and I both worked on increasing the algorith
     - And individually:
         - Creation of inputs to Snowflake
         - Alternative clustering and scoring methods, particularly for intrinsic dimensionality
+        - Confidence score
         - Scoring outputs
         - Further improvements to speed and memory usage
         - Multiple imputation for missing calls
-        - Inclustion of dimensionality reduction        
+        - Inclusion of dimensionality reduction 
+        - Testing Snowflake on the ALSPAC cohort       
 ```
