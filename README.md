@@ -24,6 +24,11 @@ pip3 install -r requirements-dev.txt
 `Rscript install.R`
 
 ## Website:
+
+To edit in ipynb
+`python3 -m notebook`
+
+
 To build html:
 `jupyter-book build book`
 
@@ -63,8 +68,11 @@ Finally, move to the `latex` directory and run `make`.
 
 
 
-`jupyter-book build book --builder pdfhtml --toc book/_toc.yml`
+- Run `jupyter-book build book --builder pdfhtml --toc book/_toc.yml`
+- This will create a borked PDF (no maths) and also create a index.html with the entire book. So go to that file `open book/_build/html/index.html` and save as/print to pdf and print page `3-` (3 to end).
 - add page numbers from page 11 to end using [https://www.ilovepdf.com/add_pdf_page_number](https://www.ilovepdf.com/add_pdf_page_number)
 - remove first 2 pages in preview
 
 <!-- Note when you make the PDF, it will break the website html (there will be a new pdf html version), so you must then rebuild the normal version `juputer-book build book` -->
+
+## To build `documents/`

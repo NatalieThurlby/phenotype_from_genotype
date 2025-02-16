@@ -53,10 +53,9 @@ fetal development. This SNP was flagged up by an ontology term associated with m
 - **3. making plausible multi-SNP trait predictions** a combination of 2 SNPs is required for the phenotype (ataxia – a disfunction of the central nervous system) to be predicted. One predicted (`rs13436090`) has been associated with autosomal dominant cerebellar ataxia (ADCA){cite}`yoshida2009severity`. The second SNP (`rs2269961`) is a new candidate SNP, a protein from which (Tocopherol-associated protein 2) is thought to be responsible for transporting vitamin E (a deficiency of which can cause spinocerebellar ataxia{cite}`brigelius1999vitamin`).
 
 ## Discussion 
-(alspac-phenotype-problems)=
-
 Snowlflake's phenotype prediction results were disappointing but could have a number of possible interpretations.
 
+(alspac-phenotype-problems)=
 ### Selection of phenotypes
 For valid ethical reasons, it was only possible to request a small number of phenotypes from ALSPAC.
 Snowflake isn't expected to work for all phenotypes, since we know there are many other mechanisms (some not even genetic) behind phenotype besides only the disruption of proteins through missense SNPs in protein-coding genes.
