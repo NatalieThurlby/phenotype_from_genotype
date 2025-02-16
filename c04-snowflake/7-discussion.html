@@ -725,7 +725,7 @@ The motivation for creating <code class="docutils literal notranslate"><span cla
 This was far from incremental, since other leading approaches predicted phenotypes on a phenotype-per-phenotype basis, or restricted the problem to prioritising variants.
 We can only test <code class="docutils literal notranslate"><span class="pre">snowflake</span></code> on data sets with both genetic and phenotype information across many phenotypes, which means it is very difficult to conclusively test (we have very low statistical power over all phenotypes).</p>
 <p>It is disappointing that the phenotype predictor does not produce statistically significant results.
-However, the phenotype predictor may yet be useful for revealing candidate SNPs for certain kinds of diseases, and when a suitable data set becomes available (e.g. through the growing number of publicly available genotypes on platforms such as OpenSNP<span id="id1">[<a class="reference internal" href="../cz-end-matter/reference.html#id149"><span>208</span></a>]</span>), this method will still be ready to be tested.
+However, the phenotype predictor may yet be useful for revealing candidate SNPs for certain kinds of diseases, and when a suitable data set becomes available (e.g. through the growing number of publicly available genotypes on platforms such as OpenSNP<span id="id1">[<a class="reference internal" href="../cz-end-matter/reference.html#id150"><span>209</span></a>]</span>), this method will still be ready to be tested.
 An alternative validation would be experimentally testing a prediction (e.g. with knockouts) of a phenotype with a highly interesting distribution of scores.</p>
 <p>–&gt;</p>
 </div>
@@ -747,7 +747,7 @@ For example, 23andMe tests for <a class="reference external" href="https://www.2
 <p>Despite much development effort, there remain some idiosyncrasies to the predictor.
 For example, DcGO can map multiple terms to the same set of SNPs.
 This can sometimes be a diverse group of phenotypes which do not tend to co-occur in individuals and when this occurs, it is likely that we cannot make a good prediction.
-A semantic similarity measure, such as GOGO<span id="id3">[<a class="reference internal" href="../cz-end-matter/reference.html#id150"><span>209</span></a>]</span> or Wang’s method<span id="id4">[<a class="reference internal" href="../cz-end-matter/reference.html#id151"><span>210</span></a>]</span> could be used to check this, and update the confidence score accordingly.
+A semantic similarity measure, such as GOGO<span id="id3">[<a class="reference internal" href="../cz-end-matter/reference.html#id151"><span>210</span></a>]</span> or Wang’s method<span id="id4">[<a class="reference internal" href="../cz-end-matter/reference.html#id152"><span>211</span></a>]</span> could be used to check this, and update the confidence score accordingly.
 It might be possible that constraining DcGO to use only more closely related species rather than the whole tree of life might be preferable for this task, however, this would be a trade off, as this change would also affect the predictor’s coverage of both phenotypes and variants.</p>
 </div>
 <div class="section" id="coverage-of-variants-synonymous-snps-nonsense-and-non-coding-variants">
@@ -755,7 +755,7 @@ It might be possible that constraining DcGO to use only more closely related spe
 <p>There are also clearly many aspects of the molecular biology mentioned in <a class="reference internal" href="../c02-biology-background/0-index.html#c02-biology-bg"><span class="std std-numref">chapter 2</span></a> that are not represented in the model used by the phenotype predictor.
 For example nonsense mutations, synonymous SNPs, regulatory networks, and non-coding variants.
 Updating the predictor to include these things could potentially give the predictor enough power to be validated on existing data sets.</p>
-<p>For example, non-coding variants could be included by extending <code class="docutils literal notranslate"><span class="pre">dcGO</span></code> annotations to SNPs in linkage disequilibrium, and using the non-coding version of <code class="docutils literal notranslate"><span class="pre">FATHMM</span></code>, <code class="docutils literal notranslate"><span class="pre">FATHMM-XF</span></code><span id="id5">[<a class="reference internal" href="../cz-end-matter/reference.html#id152"><span>211</span></a>]</span>.</p>
+<p>For example, non-coding variants could be included by extending <code class="docutils literal notranslate"><span class="pre">dcGO</span></code> annotations to SNPs in linkage disequilibrium, and using the non-coding version of <code class="docutils literal notranslate"><span class="pre">FATHMM</span></code>, <code class="docutils literal notranslate"><span class="pre">FATHMM-XF</span></code><span id="id5">[<a class="reference internal" href="../cz-end-matter/reference.html#id153"><span>212</span></a>]</span>.</p>
 </div>
 <div class="section" id="localised-expression">
 <span id="dcgo-expression-problem"></span><h3><span class="section-number">4.7.3.4. </span>Localised expression<a class="headerlink" href="#localised-expression" title="Permalink to this headline">¶</a></h3>
@@ -822,7 +822,7 @@ To this, I used the <a class="reference internal" href="#data-hazards"><span cla
 <td><p>Reinforces unfair treatment of individuals and groups. This may be due to for example input data, algorithm or software design choices, or society at large.</p></td>
 <td><a class="reference internal image-reference" href="../_images/reinforce-bias.png"><img alt="hazard label for reinforces existing bias" class="align-center" src="../_images/reinforce-bias.png" style="width: 200px;" /></a>
 </td>
-<td><p>Project does not check that the algorithm works just as well for non-white races, and we would expect it to work less well for them since they are less represented in the input data linking variants and diseases<span id="id6">[<a class="reference internal" href="../cz-end-matter/reference.html#id282"><span>212</span></a>]</span>.</p></td>
+<td><p>Project does not check that the algorithm works just as well for non-white races, and we would expect it to work less well for them since they are less represented in the input data linking variants and diseases<span id="id6">[<a class="reference internal" href="../cz-end-matter/reference.html#id283"><span>213</span></a>]</span>.</p></td>
 <td><p>Snowflake’s efficiacy should be tested separately for each demographic that any deployment may effect.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Ranks or classifies people</strong></p></td>
@@ -901,7 +901,7 @@ FATHMM-MKL is constrained to build 37 of the human reference genome which is no 
 </div>
 <div class="section" id="conclusions">
 <h2><span class="section-number">4.7.6. </span>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
-<p>While the results of my application of Snowflake to ALSPAC were disappointing, my technical contributions to Snowflake included finding and fixing crucial bugs, which allowed it to go on to it’s latest and most successful iteration as Nomaly<span id="id7">[<a class="reference internal" href="../cz-end-matter/reference.html#id4"><span>164</span></a>]</span>.</p>
+<p>While the results of my application of Snowflake to ALSPAC were disappointing, my technical contributions to Snowflake included finding and fixing crucial bugs, which allowed it to go on to it’s latest and most successful iteration as Nomaly<span id="id7">[<a class="reference internal" href="../cz-end-matter/reference.html#id5"><span>165</span></a>]</span>.</p>
 <p>Snowflake (and Nomaly) represent a highly novel approach to phenotype and variant function prediction, and it is possible that it’s limitations can be overcome as new datasets become available.</p>
 </div>
 </div>

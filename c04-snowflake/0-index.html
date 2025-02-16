@@ -48,6 +48,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -544,9 +546,10 @@ title="Fullscreen mode"
                 
   <div class="section" id="phenotype-prediction-with-snowflake">
 <span id="c04-snowflake"></span><h1><span class="section-number">4. </span>Phenotype prediction with Snowflake<a class="headerlink" href="#phenotype-prediction-with-snowflake" title="Permalink to this headline">¶</a></h1>
+<p><span class="math notranslate nohighlight">\( \)</span></p>
 <p>This chapter describes the Snowflake algorithm for phenotype prediction that I developed in collaboration with Jan Zaucha, Ben Smithers and Julian Gough.
-The development of <code class="docutils literal notranslate"><span class="pre">snowflake</span></code> resulted in a patent<span id="id1">[<a class="reference internal" href="../cz-end-matter/reference.html#id18"><span>4</span></a>]</span>, of which I am an author, and later a paper<span id="id2">[<a class="reference internal" href="../cz-end-matter/reference.html#id4"><span>164</span></a>]</span> (the latest iteration of the tool is now called <code class="docutils literal notranslate"><span class="pre">Nomaly</span></code>).
-This chapter deals with the functionality and design of the Snowflake algorithm, while the <span class="xref std std-ref">next</span> describes it’s application to the ALSPAC dataset.</p>
+The development of <code class="docutils literal notranslate"><span class="pre">snowflake</span></code> resulted in a patent<span id="id1">[<a class="reference internal" href="../cz-end-matter/reference.html#id19"><span>4</span></a>]</span>, of which I am an author, and later a paper<span id="id2">[<a class="reference internal" href="../cz-end-matter/reference.html#id5"><span>165</span></a>]</span> (the latest iteration of the tool is now called <code class="docutils literal notranslate"><span class="pre">Nomaly</span></code>).
+This chapter deals with the functionality and design of the Snowflake algorithm and it’s application to the ALSPAC dataset.</p>
 <p>At it’s heart, Snowflake is a <abbr title="Command Line Interface">CLI</abbr> tool and private Python package that allows the user to detect outliers for each phenotype of interest, according to their genotype.
 Individuals with unusual combinations of variants in highly conserved protein domains associated with a phenotype will score highly for (be indicated as likely to have) a phenotype.</p>
 <p>The original idea for Snowflake was Julian’s, as well as the initial Perl implementation.
@@ -555,7 +558,7 @@ Working from Ben’s translation, Jan and I both worked on increasing the algori
 <div class="hint admonition">
 <p class="admonition-title">Contributions in this chapter</p>
 <ul class="simple">
-<li><p>Writing part of the patent<span id="id3">[<a class="reference internal" href="../cz-end-matter/reference.html#id18"><span>4</span></a>]</span> relating to intrinsic dimensionality.</p></li>
+<li><p>Writing part of the patent<span id="id3">[<a class="reference internal" href="../cz-end-matter/reference.html#id19"><span>4</span></a>]</span> relating to intrinsic dimensionality.</p></li>
 <li><p>Software development to increase and test the algorithm’s functionality, including:</p>
 <ul>
 <li><p>With Jan and Ben:</p>

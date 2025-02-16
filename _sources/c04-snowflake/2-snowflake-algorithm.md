@@ -171,7 +171,7 @@ Such that: $\mu_{\gamma}=\frac{exp(\gamma \frac{n-n_j}{n})-1}{exp(\gamma)-1}$ wh
 The global-local score was inspired by the {ref}`tf-idf<tf-idf>` score popular in Natural Language Processing bag-of-word models. 
 
 The global-local score is always greater than zero, but it has no upper limit because the largest possible score than an individual can have depends on the number of high-scoring SNPs and the magnitude of the FATHMM score. 
-For this reason, the global-local score is transformed to a score that is comparable between phenotypes, using a formula first introduced in the earlier Proteome Quality Index paper{cite}`Zaucha2015`:
+For this reason, the global-local score is transformed to a score that is comparable between phenotypes, using a formula first introduced in the earlier Proteome Quality Index paper{cite}`Zaucha2015-ez`:
 
 ${s}_{{trans}}(p)=^3{\sqrt {\frac{{e}^{-\left(1+\tfrac{{s}_{{rank}}(p)}{N}\right)\varphi }}{{e}^{-\varphi }}\cdot \frac{s(p)}{\mathop{\sum}\limits_{p}s(p)}\cdot \frac{s(p)-{{{{{\rm{min }}}}}}\,s(p)}{{{{{{\rm{max }}}}}}\,s(p)-{{{{{\rm{min }}}}}}\,s(p)}}}$
 
