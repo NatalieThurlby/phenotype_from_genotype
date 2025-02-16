@@ -3,6 +3,7 @@ venv/*
 .jekyll-cache/
 .sass-cache/
 .idea/
+book/_build/.jupyter_cache/global.db
 book/_build/html/
 book/_build/jupyter_execute/
 book/_build/pdf/
@@ -14,7 +15,13 @@ book/_build/.doctrees/
 *.Rproj
 .ipynb_checkpoints
 
+*.docx
+
 experiments/
 data/
 __pycache__/
+.vscode/
 book/images/combining_funnel_interactive_files/
+
+# used to identify differences between GH Actions and local only:
+requirements-pigar.txt 

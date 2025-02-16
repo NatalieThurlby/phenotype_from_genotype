@@ -6,7 +6,7 @@
 
 The low cost of sequencing means that databases of sequences have been expanding very rapidly in comparison to other information, which is much harder to determine.
 Computational predictive methods aim to predict structure or function from sequence in order to bridge this gap.
-Here I describe some of the challenges and methods in this space.
+Here I describe some of the challenges and methods in this space, many of which leverage the ontologies and databases described in the previous sections.
 
 (protein-classification-prediction)=
 ## Prediction tasks: Protein classification prediction
@@ -15,7 +15,7 @@ Here I describe some of the challenges and methods in this space.
 [//]: # (TODO: Mention PFAM?)
 
 As {ref}`previously mentioned<protein-classification>`, proteins are often classified by structural similarities. 
-This information is often used because researchers identify a gene of interest, but information about it's function or structure (in PDB) has not yet been captured and stored.
+This information is often used because researchers identify a gene of interest, but information about it's function or structure (in PDB) has not yet been captured and stored (i.e. the protein is "uncharacterised").
 In such cases, it's often necessary to make inferences about protein structure or function based on their similarity to known proteins.
 This is sometimes done using sequence similarity (e.g. {ref}`BLAST<blast>`), but sequence similarity can vary considerably between proteins with the same underlying structure. 
 This is why structural similarity searches based on protein classification are preferred.
@@ -37,26 +37,44 @@ The CATH (Class, Architecture, Topology, Homologous superfamily){cite}`Orengo199
 
 (superfamily-update)=
 ### SUPERFAMILY
-SUPERFAMILY{cite}`Gough2001-ct` uses Hidden Markov Models (HMMs) to assign sequences to SCOP domains, primarily at the superfamily level. 
-This allows the functions of poorly understood proteins to be inferred based on how closely they match known superfamilies. 
+SUPERFAMILY{cite}`Gough2001-ct` is structural annotation procedure and associated web resource, which uses Hidden Markov Models (HMMs) to assign sequences to SCOP domains, primarily at the superfamily level. 
+This is a process analagous to {ref}`gene annotation<structural-annotation>`.
+
+
+```{figure} ../images/superfamily-assignment.png
+---
+height: 500px
+name: superfamily-assignment
+---
+Domain assignments for [`ENSP00000220888.5`](https://www.ensembl.org/Homo_sapiens/Transcript/ProteinSummary?g=ENSG00000104447;r=8:115412549-115668702;t=ENST00000220888) - a human protein.
+The image shows the protein is mostly not made up of protein domains, but has two domains assigned, highlighted in blue (*Glucocorticoid receptor-like (DNA-binding domain)*) and red (*beta-beta-alpha* zinc fingers). 
+```
+
+This domain assignment is also used as a form of functional annotation and allows the functions of poorly understood proteins to be inferred based on how closely they match known superfamilies. 
+This is how the website is frequently used - as it allows users to search a new sequence and see which domains are predicted to fall in the sequence and where.
+It is also possible to see domain assignments of known proteins, e.g. by ENSP (Ensembl Protein ID), see {numref}`superfamily-assignment`.
+
 HMMs are very successful at such assignments since pairwise correlations between proteins (or their domains) and other proteins in the family may be weak, but consistently for many proteins; this can be picked up by an HMM. 
 The superfamily level is chosen since it is the broadest level which suggests evolutionary relationships, but SUPERFAMILY also generates assignments at the (stricter) family level.
 
 HMMs are created by first finding closely relating protein homologs for a given protein superfamily using {ref}`BLAST<blast>`, and then extending it by comparing the HMM to more distantly related homologs. 
 The resulting HMM library is fine-tuned by some manual curation. 
 
-The SUPERFAMILY website also contains other tools, including a database of all sequences (genomes) which are used to generate the HMM library.
-
-[//]: # (TODO: Cite dcGO + D2P2 + stol)
-[//]: # (TODO: Add my contribution in a box)
+Although SUPERFAMILY’s primary resource is it’s HMM library, it also integrates a range of other tools for sequence analysis, for example protein disorder prediction (D2P2) and GO annotation (dcGO), as well as a domain-based phylogenetic tree (sTol). 
+In addition, SUPERFAMILY makes available all sequences that it uses to build HMM models, some of which cannot be found elsewhere. 
 
 (my-superfamily-contribution)=
 **SUPERFAMILY update**
-I contributed to SUPERFAMILY’s 2014 update{cite}`Oates2015-li` by editing the paper and adding a small number of proteomes. 
-The SUPERFAMILY database of proteomes doubled from 1400 to over 3200 from 2010 to 2014. 
-The update paper described this development, as well as highlighting SUPERFAMILY as a resource for unique proteomes that are not found elsewhere (e.g. Uniprot). 
-Although SUPERFAMILY’s primary resource is it’s HMM library, it also integrates a range of other tools for sequence analysis, for example protein disorder prediction (D2P2) and GO annotation (dcGO), as well as a domain-based phylogenetic tree (sTol). 
+```{admonition} Contributions in this section
+:class: hint
+The SUPERFAMILY website and resources were jointly maintained between members of Computational Biology group (then) at Bristol, which involved replying to user emails, and updates to the website.
 
+In 2014, a SUPERFAMLIY update paper was published. I contributed by editing the paper and adding a small number of proteome sequences in the class Cyanophyceae - 5 of the proteomes available on SUPERFAMILY.
+```
+
+I contributed to SUPERFAMILY’s 2014 update{cite}`Oates2015-li`. 
+The SUPERFAMILY database of proteomes doubled from 1400 to over 3200 from 2010 to 2014, containing sequences from across the tree of life, including  1714 species and 1544 strains.
+The update paper described this development, as well as highlighting SUPERFAMILY as a resource for unique proteomes that are not found elsewhere (e.g. Uniprot), and describing the update to the (at the time) most recent human reference genome. 
 
 ## Prediction tasks: Protein function prediction
 Human genes can have multiple functions, but currently, we don't even know one function for all of them.

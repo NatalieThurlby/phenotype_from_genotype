@@ -1,2 +1,4 @@
 pyppeteer
 sphinx-multitoc-numbering
+mystnb #for documents/corrections_replies
+notebook # for jupyter notebooks

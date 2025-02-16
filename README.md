@@ -1,7 +1,34 @@
 # phenotype_from_genotype
 Repo for tracking my thesis' conversion to jupyter book.
 
+## Setup:
+
+0. Install Python, Install R
+
+1. Clone git repo.
+
+2. Use a virtual environment:
+```bash
+
+python3 -m venv venv/
+source venv/bin/activate
+```
+
+3. Install requirements
+```bash
+pip3 install -r requirements.txt
+pip3 install -r requirements-dev.txt
+```
+
+- Install IRkernel 
+`Rscript install.R`
+
 ## Website:
+
+To edit in ipynb
+`python3 -m notebook`
+
+
 To build html:
 `jupyter-book build book`
 
@@ -37,4 +64,15 @@ Next edit `_build/latex/thesis.tex`:
 Finally, move to the `latex` directory and run `make`.
 -->
 
-` jupyter-book build . --builder pdfhtml`
+<!-- ` jupyter-book build . --builder pdfhtml` (This doesn't work if you have a venv at the moment)-->
+
+
+
+- Run `jupyter-book build book --builder pdfhtml --toc book/_toc.yml`
+- This will create a borked PDF (no maths) and also create a index.html with the entire book. So go to that file `open book/_build/html/index.html` and save as/print to pdf and print page `3-` (3 to end).
+- add page numbers from page 11 to end using [https://www.ilovepdf.com/add_pdf_page_number](https://www.ilovepdf.com/add_pdf_page_number)
+- remove first 2 pages in preview
+
+<!-- Note when you make the PDF, it will break the website html (there will be a new pdf html version), so you must then rebuild the normal version `juputer-book build book` -->
+
+## To build `documents/`

@@ -2,14 +2,14 @@
 # From genotype to phenotype: what is measured
 [//]: # (TODO: Check through and signpost where resources are just humans or model organisms or loads of things)
 [//]: # (TODO: Have an aside about model organisms)
-We will now delve into the details of some of these data sets, looking first at {ref}`DNA<dna-measurements>`, then {ref}`RNA<rna-measurements>`, then {ref}`proteins<protein-measurements>`, then {ref}`phenotypes<phenotype-measurements>`.
-This is to give us a sense of the data that exists within the databases of the bioinformatics landscape, as well as some of the subtle issues that arise when using and linking them.
+This subsection now delves into the details of the data that is collected, looking in turn at measurements of {ref}`DNA<dna-measurements>`,  {ref}`RNA<rna-measurements>`, {ref}`proteins<protein-measurements>`, and {ref}`phenotypes<phenotype-measurements>`.
+This is to illustrate what kinds of data exist within the databases of the bioinformatics landscape, as well as some of the subtle issues that arise when using and linking them
 
 (dna-measurements)=
 ## DNA
-In the {ref}`previous Chapter<what-is-dna>`, we looked at what DNA is and our understanding of how that links to phenotype. 
-Now we're going to look at the details of how this is measured and stored: and how these details impact computational biology research. 
-We'll once again go from big to small, beginning with whole genomes and moving through to individual SNPs.
+In the {ref}`previous Chapter<what-is-dna>`, DNA was described, as well as the working scientific model of it's link to phenotype. 
+In this section, the focus is on the details of how this is measured and stored: and how these details impact computational biology research. 
+Once again, these details are introduced from big to small scale, beginning with whole genomes and moving through to individual SNPs.
 
 (whole-genome)=
 ### Whole genomes
@@ -17,7 +17,7 @@ We'll once again go from big to small, beginning with whole genomes and moving t
 [//]: # (TODO: MEntion anyone can submit/collaborative nature of databases)
 Whole genome sequencing (WGS) is the sequencing of {ref}`all<really-wgs>` the genetic material of an organism, whether or not it is transcribed into RNA, or translated into protein.
 In humans, this includes all chromosomal and mitochondrial DNAs.
-Whole genomes are {ref}`sequenced<sequencing>` and {ref}`assembled<assembly-and-alignment>` as previously described.
+Whole genomes are {ref}`sequenced<sequencing>` and {ref}`assembled<assembly-and-alignment>` as previously described. 
 
 ```{margin} The *whole* genome?
 :name: really-wgs
@@ -25,15 +25,9 @@ In practice, almost complete genomes are also referred to as whole genomes, part
 Even the human genome still a small outstanding amount of unassembled DNA{cite}`Miga2015-zl` - satellite DNA which is thought to be part of the structure of chromosomes.
 ```
 
-[//]: # (TODO: Mention 1000Genomes?)
-[//]: # (TODO: Remove mention of VCF here as I explain it later and it's not really relevant yet here)
-
-(individual-wgs)=
-When WGS is carried out for an organism that has already been sequenced, the sequence data is mapped to the organism's {ref}`reference genome<human-reference-genome>`.
-This provides a more detailed and more accurate alternative to {ref}`genotyping<genotyping>` data.
-When cohorts have their whole genomes sequenced, this allows information from WGS data to be compressed into Variant Call Format (VCF) files, which stores only the allele calls for locations where there is variation in the population.
-
-Whole genomes for different organisms can be compared to one another to give us insight about the organisms, or within an organism, individuals can be compared to understand the importance of sections of DNA for that organism.
+Whole genomes for different species can be compared to one another to give us insight about health and evolution. 
+This work can be comparisons within one species in which individuals of that species are compared, or comparisons across several species.
+This field is known as comparative genomics.
 Genomes from different species are stored in databases such as the University of California Santa Cruz (UCSC) Genome Browser database{cite}`Kent2002-jg`, the US National Centre for Biotechnology Information (NCBI) Genome Sequence database{cite}`Harger2000-vr`, or the European Bioinformatics Institute's (EBI) Ensembl Genome database{cite}`Hubbard2002-oi`.
 
 (human-reference-genome)=
@@ -74,9 +68,18 @@ This includes formatting differences (storing chromosome as integers rather than
 
 (gene-measurement)=
 ### Genes
-Once we have an {ref}`assembled<assembly-and-alignment>` genome, genes are identified within them.
-The first step in this process is to look for nucleotides that code for the start codon (i.e. the amino acid methionine) (`ATG`) and end with one of the stop codons (`TAA`, `TGA`, or `TAG`).
-The potential genes found through this search are then checked in the lab, e.g. through sequencing transcripts.
+Once scientists have an {ref}`assembled<assembly-and-alignment>` genome, genes are identified within them.
+This is part of the process of {ref}`structural annotation<structural-annotation>`. 
+
+```{margin} Structural/gene annotation 
+:name: structural-annotation
+Genome annotation originally focused solely on discovering the locations of protein-coding gene.
+While gene discovery remains a big focus, structural annotation now also includes the prediction of other features such as non-coding genes and transcription factor binding- or DNA methylation sites.
+These features are identified by complex predictive algorithms, which can be *ab initio* (often HMM-based), homology-based, or a combination{cite}`ejigu2020review`. 
+
+Intron-exon distances and base and codon distributions, among other data are as predictive features.
+Observed start (i.e. the amino acid methionine - `ATG`) and stop (`TAA`, `TGA`, or `TAG`) codons are useful in validating structural annotation algorithms. 
+```
 
 Like whole genomes, the sequences and positions of genes relative to the reference genome are stored in databases.
 Again these are part of the UCSC, NCBI and EMBL-EBI ecosystem and these resources are vital to bioinformatics.
@@ -86,8 +89,8 @@ They can sometimes disagree on fundamental details such as locations of genes or
 ```{margin} Persistent identifiers
 :name: identifiers
 Persistent identifiers are long-lasting digital reference to entities{cite}`Meadows2019-zy`. 
-Gene names can change; we might agree to change gs because Excel keeps converting them to dates{cite}`Vincent2020-ih` or because two genes turn out to be one.
-Gene identifiers should be unique, and persistent over time, for example between genome builds, and as we learn more about their function, but they can still be merged or retired.
+Gene names can change; scientists might agree to change them because Excel keeps converting them to dates{cite}`Vincent2020-ih` or because what were thought to be two genes turns out to be one.
+Gene identifiers should be unique and persistent over time, for example between genome builds and as more is learned about their function, but they can still be merged or retired.
 ```
 
 Each of these databases also have their own {ref}`identifiers<identifiers>` and these names and symbols can change over time. 
@@ -96,15 +99,20 @@ For this reason, it can sometimes be difficult to map between identifiers from d
 Due to the history of the gene, and the amount of information that researchers have collected through {ref}`gene knockouts<gene-knockouts>` and gene expression experiments, it is at the level of the gene that a lot of mappings about function take place.
 This includes, for example, information about a gene's involvement in a gene regulatory network or in a {ref}`biological pathway<biological-pathways>`, and information about gene function according to {ref}`observational studies<observational-studies>`.
 
-Even in the most-studied genomes, there are many genes for which we have sequence, but no functional information.
+Even in the most-studied genomes, there are many genes for which databases contain sequence information, but no functional information.
 This is due to the low cost in sequencing experiments in comparison to the expense of knock-out or other function-determining experiments, and the inequality of studied proteins/genes. 
 This missing functional information is not likely to appear soon, without some sort of revolution in funding priorities or technology.
 
 (variants-measurements)=
 ### Variants
-Information about which variants individuals have comes from either {ref}`genotype<genotyping>` or {ref}`whole genome sequencing<individual-wgs>` data.
-Some of this data is owned by private companies, such as 23andMe.
+Information about which variants individuals have comes from either {ref}`genotype<genotyping>` or whole genome sequencing (WGS) data.
 
+(individual-wgs)=
+When WGS is carried out for an organism that has already been sequenced, the sequence data is mapped to the organism's {ref}`reference genome<human-reference-genome>`.
+When cohorts have their whole genomes sequenced, this allows information from WGS data to be compressed into Variant Call Format (VCF) files, which stores only the allele calls for locations where there is variation in the population.
+This provides a more detailed and more accurate alternative to {ref}`genotyping<genotyping>` data.
+
+Some variant data is owned by private companies, such as 23andMe.
 Databases like dbSNP{cite}`Sherry2001-nm`, clinVar, and SNPedia contain information about the location of these variants, their possible alleles, their frequency in populations, their functions, and associated phenotypes. 
 
 The largest SNP database - NCBI’s dbSNP{cite}`Sherry2001-nm` - contains information from ten organisms (including human) and has information on indels and short tandem repeats in addition to SNPs. 
@@ -133,7 +141,9 @@ Genes whose core functionality are to perform basic cell maintainance are known 
 ```
 
 As I've already explained RNA abundance in samples can be measured through RNA microarrays and RNA-Seq, and recently, RNA-Seq has been much more popular.
-Measures of mRNA abundance (i.e. gene expression data) are generally considered the best measures of translation (compared to {ref}`protein abundance<protein-abundance>` for example), and therefore the best data to tell us how DNA's blueprints are being used in different {ref}`scenarios<gene-expression-scenarios>`.
+Measures of mRNA abundance (i.e. gene expression data) are generally the most popular measures of translation (which it is a proxy for), compared to the more direct measurement of {ref}`protein abundance<protein-abundance>` for example.
+
+The popularity of RNA-Seq therefore means it is the most diverse data currently in databases, which makes it ideal for informing us how DNA's blueprints are being used in different {ref}`scenarios<gene-expression-scenarios>`.
 Together with mappings, this data is used to understand the function of genes, to identify {ref}`housekeeping genes<housekeeping-genes>`, to re-engineer gene regulatory networks, and more - knowledge about DNA function that wouldn't be possible to glean without measuring RNA.
 Like other bioinformatics data, gene expression data is also available in databases such as the EBI's Gene Expression Atlas (GxA){cite}`Petryszak2016-je` and Single Cell Expression Atlas{cite}`Papatheodorou2020-ib` (for {ref}`bulk and single cell gene expression<bulk-scRNA-seq>`, respectively).
 
@@ -177,7 +187,7 @@ For this reason, TPM is now generally preferred over RPKM/FPKM{cite}`Wagner2012-
 **Normalisation - between-sample**:
 While TPM gives us a measure of relative abundance, it does not give us a measure of absolute abundance. 
 One outlying gene which is highly expressed will have the effect of making all other genes look relatively less expressed. 
-We might expect this to occur, particularly when samples are under different conditions (e.g. disease/treatment). 
+This might be expected to occur, particularly when samples are under different conditions (e.g. disease/treatment). 
 Between-sample normalisation methods are designed to counter this issue, and enable researchers to compare different samples.
 
 These methods adjust counts to reduce the impact of outlying expression values. 
@@ -231,23 +241,26 @@ These structures are used for {ref}`protein classification<protein-classificatio
 As described in {numref}`what-is-phenotype`, most phenotypes that are studied today are based in medicine: this can range from the results of a blood test, to the presence of a disease diagnosis. 
 Neutral traits like height, eye colour, baldness, etc, are also sometimes measured.
 
-Phenotypic traits can be measured in a variety of ways, depending on the phenotype.
+Phenotypic traits can be measured in a huge variety of ways, depending on the phenotype.
 One important type is data collected via survey or interview, where participants self-identify as having certain illnesses, or symptoms.
 This type of data can suffer from biases due to what people feel comfortable answering{cite}`Furnham1986-yt,Knauper1994-wl`.
 
-Phenotype data must be connected to genotype data in order to be useful for validating genotype-to-phenotype predictions, and due to the sensitivity of this kind of information, there are a limited number of these kinds of data sets.
+An additional challenge is that phenotype data must be connected to genotype data in order to be useful for validating genotype-to-phenotype predictions/
+Due to the sensitivity of this kind of information, there are a limited number of these kinds of data sets.
 Some data sets focus on particular phenotypes, while others are cohort studies that record everything about a cohort (for example the the Avon Longitudinal Study of Parents and Children, ALSPAC{cite}`Golding2001-oj`, and the UK Biobank{cite}`Bycroft2018-mw`). 
-In the latter case, it is not easy for researchers to access the whole data set, due to concerns about de-anonymisation{cite}`Powell2021-vc`.
+Even in data sets that contain the necessary information, it is often not possible for researchers to access the whole data set, due to concerns about de-anonymisation{cite}`Powell2021-vc`.
 
-Knowledge about how phenotypes are related to each other (e.g. liver cancer is a type of cancer that is found in the liver) is organised in {ref}`ontologies<what-are-ontologies>`, which are described in their own section. 
+Some knowledge about how phenotypes are related to each other (e.g. liver cancer is a type of cancer that is found in the liver) is organised in {ref}`ontologies<what-are-ontologies>`, which are described in their own section. 
 These ontologies also form a defined vocabulary for terms, with identifiers, definitions, and links to other information.
 
+This huge variety of human phenotype information (questionnaire data, lab results, ontologies, etc) can then be used to investigate the connection between genotype and phenotype.
+
 (connection-genotype-phenotype)=
-## Measuring the connection between genotype and phenotype
+## Methods for measuring the connection between genotype and phenotype
 
 [//]: # (TODO: Mention molecular dynamics)
 
-There are many different methods of investigating the connection between genotype and phenotype.
+Having collected data genotype and phenotype data, there are a number of different methods of investigating the connection between genotype and phenotype.
 Some methods focus solely on the "what", seeking to answer the question "*what phenotypes(s)* does this gene have an effect on?", while some focus also on the "how", i.e. answering "*what is the mechanism* behind this phenotype?".
 {ref}`Genome Wide Association Studies (GWAS)<observational-studies>` are the most popular way of finding potential or actual "what" connections, while {ref}`gene knockouts<gene-knockouts>` and building {ref}`biological pathways<biological-pathways>` is currently the main way of finding "why" connections.
 There are also many more specific kinds of experiments which can contribute pieces of the puzzle. 
@@ -258,7 +271,8 @@ Efforts to uncover the links between genotype and phenotype broadly take one of 
 3. __Cross-cutting:__ Computational methods which aim to uncover protein or variant function, and protein interactions across the genome, and across phenotypes. These methods tend to rely on data from (1) and (2). I will discuss some of these in the {numref}`predictive-methods`.
 
 Connections to phenotype can be made with different scales and types of genetic features, from SNPs, genes, transcripts, and proteins to networks thereof and variation within populations.
-Computational biology links these resources well, so that knowledge at these different scales can be investigated, the {ref}`Gene Ontology Annotation<gene-ontology-annotation>` resource for example, connects information from many of these computational and experimental sources at the level of the gene.
+Computational biology links these resources well, so that knowledge at these different scales can be investigated, the {ref}`Gene Ontology Annotation<gene-ontology-annotation>` resource for example, connects information from many of these computational and experimental sources at the level of the gene. 
+Similarly, OMIM.org{cite}`amberger2019omim` (Online Mendelian Inheritance Map) and the Human Gene Mutation Database{cite}`stenson2017human` are also resources which seek to catalog links between (human) genetic and phenotype information - both of which contain and share resources with Gene Ontology.
 
 (observational-studies)=
 ### Genome Wide Association Studies
